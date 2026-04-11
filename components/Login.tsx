@@ -17,7 +17,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen w-full font-sans bg-[#EFF4F5] overflow-hidden relative">
+    <div className="flex flex-col h-screen w-full font-sans bg-white overflow-hidden relative">
       {/* Top Right Icons */}
       <div className="absolute top-6 right-8 flex items-center gap-4 text-[#374151]">
          <Plus size={18} weight="bold" />
@@ -35,8 +35,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           {/* Title */}
           <h1 className="text-[17px] font-bold text-[#000000] mb-6">Log in to your Kletta account</h1>
 
-          {/* Login Card */}
-          <div className="w-full bg-white rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-6 flex flex-col">
+          {/* Login Content Area */}
+          <div className="w-full p-6 flex flex-col">
             <form onSubmit={(e) => { e.preventDefault(); onLogin(); }} className="w-full space-y-4">
             {/* Email Field */}
             <div className="space-y-1.5">
