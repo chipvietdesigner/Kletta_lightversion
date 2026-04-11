@@ -82,7 +82,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
               <label className="flex items-center gap-2.5 cursor-pointer group">
                 <div 
                   onClick={() => setRememberMe(!rememberMe)}
-                  className={`w-5 h-5 rounded-[4px] flex items-center justify-center border transition-all ${rememberMe ? 'bg-[#005F6B] border-[#005F6B]' : 'border-[#B5B5B5] bg-white'}`}
+                  className={`w-5 h-5 rounded-[4px] flex items-center justify-center border transition-all ${rememberMe ? 'bg-[#005A66] border-[#005A66]' : 'border-[#B5B5B5] bg-white'}`}
                 >
                   {rememberMe && <div className="w-2.5 h-2.5 bg-white rounded-[1px]"></div>}
                 </div>
@@ -96,7 +96,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             {/* Login Button */}
             <button 
               type="submit" 
-              className="w-full bg-[#005F6B] hover:bg-[#004D57] text-white h-[48px] rounded-[8px] font-bold text-[16px] transition-all shadow-[0_4px_0_rgba(0,0,0,0.1)] mt-2 flex items-center justify-center transform active:translate-y-[2px] active:shadow-none"
+              className="w-full bg-[#005A66] hover:bg-[#004D57] text-white h-[48px] rounded-[8px] font-bold text-[16px] transition-all shadow-[0_4px_0_0_#1A1A1A] mt-2 flex items-center justify-center transform active:translate-y-[2px] active:shadow-none"
             >
               Login
             </button>
