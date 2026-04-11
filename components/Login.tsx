@@ -49,7 +49,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                   type="email" 
                   required
                   placeholder="Enter your email" 
-                  className="w-full h-[48px] pl-11 pr-4 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#B5B5B5]" 
+                  className="w-full h-[48px] pl-11 pr-4 rounded-[8px] border border-[#B5B5B5] text-[14px] font-medium text-black focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] outline-none transition-all placeholder:text-[#B5B5B5]" 
                 />
               </div>
             </div>
@@ -65,7 +65,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                   type={showPassword ? "text" : "password"} 
                   required
                   placeholder="Enter your password" 
-                  className="w-full h-[48px] pl-11 pr-12 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#B5B5B5]" 
+                  className="w-full h-[48px] pl-11 pr-12 rounded-[8px] border border-[#B5B5B5] text-[14px] font-medium text-black focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] outline-none transition-all placeholder:text-[#B5B5B5]" 
                 />
                 <button 
                   type="button" 
@@ -86,7 +86,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                 >
                   {rememberMe && <div className="w-2.5 h-2.5 bg-white rounded-[1px]"></div>}
                 </div>
-                <span className="text-[13px] font-medium text-[#374151] select-none">Remember me</span>
+                <span className="text-[13px] font-medium text-black select-none">Remember me</span>
               </label>
               <button type="button" className="text-[13px] font-bold text-[#005F6B] hover:underline transition-colors">
                 Forgot password
@@ -104,7 +104,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             {/* Separator */}
             <div className="relative flex items-center py-3">
               <div className="flex-grow border-t border-[#B5B5B5]"></div>
-              <span className="flex-shrink mx-4 text-[13px] text-[#374151] font-medium">or continue</span>
+              <span className="flex-shrink mx-4 text-[13px] text-black font-medium">or continue</span>
               <div className="flex-grow border-t border-[#B5B5B5]"></div>
             </div>
 

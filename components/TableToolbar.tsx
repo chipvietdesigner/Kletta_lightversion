@@ -34,7 +34,7 @@ const TableToolbar: React.FC<TableToolbarProps> = ({
             type="text" 
             placeholder={placeholder}
             onChange={(e) => onSearch?.(e.target.value)}
-            className="h-[42px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
+            className="h-[42px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all w-[260px] focus:outline-none font-normal"
           />
         </div>
         <button 

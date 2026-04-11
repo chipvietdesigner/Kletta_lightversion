@@ -183,7 +183,7 @@ const CreateIncomeModal: React.FC<CreateIncomeModalProps> = ({ isOpen, onClose }
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="0.00"
-                    className="w-full h-[52px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors focus:outline-none"
+                    className="w-full h-[52px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all focus:outline-none"
                   />
                 </div>
               </div>
@@ -198,7 +198,7 @@ const CreateIncomeModal: React.FC<CreateIncomeModalProps> = ({ isOpen, onClose }
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full h-[52px] pl-12 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[13px] text-[#0F2F33] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors focus:outline-none"
+                    className="w-full h-[52px] pl-12 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[13px] text-[#0F2F33] focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all focus:outline-none"
                   />
                 </div>
               </div>
@@ -213,7 +213,7 @@ const CreateIncomeModal: React.FC<CreateIncomeModalProps> = ({ isOpen, onClose }
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="What was this expense for?"
-                    className="w-full h-[140px] pl-12 pr-4 py-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors focus:outline-none resize-none"
+                    className="w-full h-[140px] pl-12 pr-4 py-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all focus:outline-none resize-none"
                   />
                 </div>
               </div>

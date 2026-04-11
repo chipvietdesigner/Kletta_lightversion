@@ -145,7 +145,7 @@ const Account: React.FC = () => {
                       type="text"
                       value={personalDetails.description}
                       onChange={(e) => setPersonalDetails({...personalDetails, description: e.target.value})}
-                      className="w-full h-[42px] px-3 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors"
+                      className="w-full h-[42px] px-3 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all"
                     />
                   ) : (
                     <div className="text-[13px] text-[#6B7280] leading-relaxed py-2">
@@ -162,7 +162,7 @@ const Account: React.FC = () => {
                       type="text"
                       value={personalDetails.companyName}
                       onChange={(e) => setPersonalDetails({...personalDetails, companyName: e.target.value})}
-                      className="w-full h-[42px] px-3 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors"
+                      className="w-full h-[42px] px-3 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all"
                     />
                   ) : (
                     <div className="text-[13px] text-[#6B7280] py-2 uppercase tracking-wide">
@@ -179,7 +179,7 @@ const Account: React.FC = () => {
                       type="text"
                       value={personalDetails.contactPerson}
                       onChange={(e) => setPersonalDetails({...personalDetails, contactPerson: e.target.value})}
-                      className="w-full h-[42px] px-3 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors"
+                      className="w-full h-[42px] px-3 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all"
                     />
                   ) : (
                     <div className="text-[13px] text-[#6B7280] py-2">
@@ -196,7 +196,7 @@ const Account: React.FC = () => {
                       <select 
                         value={personalDetails.language}
                         onChange={(e) => setPersonalDetails({...personalDetails, language: e.target.value})}
-                        className="w-full h-[42px] pl-9 pr-8 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer"
+                        className="w-full h-[42px] pl-9 pr-8 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all appearance-none cursor-pointer"
                       >
                         <option>English</option>
                         <option>Finnish</option>
@@ -261,7 +261,7 @@ const Account: React.FC = () => {
                           type="text" 
                           value={editMessageValue}
                           onChange={(e) => setEditMessageValue(e.target.value)}
-                          className="w-full h-[42px] px-4 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors shadow-sm"
+                          className="w-full h-[42px] px-4 bg-white border border-[#E5E7EB] rounded-xl text-[13px] text-[#0F2F33] font-medium focus:outline-none focus:border-[#005A66] focus:border-2 focus:shadow-[0_0_0_3px_rgba(0,90,102,0.20)] transition-all shadow-sm"
                           autoFocus
                         />
                      </div>
