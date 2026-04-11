@@ -3,7 +3,9 @@ import {
   Eye, 
   EyeSlash, 
   Plus,
-  Globe
+  Globe,
+  EnvelopeSimple,
+  LockSimple
 } from '@phosphor-icons/react';
 
 interface LoginScreenProps {
@@ -15,96 +17,118 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="flex h-screen w-full font-sans bg-white overflow-hidden">
-      {/* LEFT SIDE: LOGIN FORM - 40% width */}
-      <div className="w-full lg:w-[40%] flex flex-col px-8 md:px-16 lg:px-20 py-12 justify-center overflow-y-auto border-r border-gray-50">
-        <div className="max-w-[420px] w-full mx-auto">
-          {/* Logo - Increased size to h-10 */}
-          <div className="mb-16">
-            <img src="https://i.ibb.co/99RKpWNq/Color-Black.png" alt="Kletta" className="h-10 w-auto" />
+    <div className="flex flex-col h-screen w-full font-sans bg-[#EFF4F5] overflow-hidden relative">
+      {/* Top Right Icons */}
+      <div className="absolute top-6 right-8 flex items-center gap-4 text-[#374151]">
+         <Plus size={18} weight="bold" />
+         <Globe size={18} />
+         <div className="text-[18px] leading-none">🇬🇧</div>
+      </div>
+
+      <div className="flex-1 flex items-center justify-center p-4">
+        <div className="w-full max-w-[420px] flex flex-col items-center">
+          {/* Logo */}
+          <div className="mb-4">
+            <img src="https://i.ibb.co/99RKpWNq/Color-Black.png" alt="Kletta" className="h-12 w-auto" />
           </div>
 
-          <div className="mb-8">
-            <h1 className="text-[26px] font-bold text-black tracking-tight mb-2">Welcome back!</h1>
-            <p className="text-[14px] text-gray-700 font-normal">
-              New to Kletta? <button className="text-[#1E6F73] font-bold hover:underline">Sign up</button>
-            </p>
-          </div>
+          {/* Title */}
+          <h1 className="text-[18px] font-bold text-[#000000] mb-8">Log in to your Kletta account</h1>
 
-          <form onSubmit={(e) => { e.preventDefault(); onLogin(); }} className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-[13px] font-medium text-black ml-1">Email</label>
-              <input 
-                type="email" 
-                required
-                placeholder="Enter your email" 
-                className="w-full h-[50px] px-4 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] outline-none transition-all" 
-              />
+          {/* Login Card */}
+          <div className="w-full bg-white rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-10 flex flex-col">
+            <form onSubmit={(e) => { e.preventDefault(); onLogin(); }} className="w-full space-y-5">
+            {/* Email Field */}
+            <div className="space-y-1.5">
+              <label className="text-[13px] font-bold text-[#000000]">Email</label>
+              <div className="relative">
+                <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B7280]">
+                  <EnvelopeSimple size={18} />
+                </div>
+                <input 
+                  type="email" 
+                  required
+                  placeholder="Enter your email" 
+                  className="w-full h-[48px] pl-11 pr-4 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#9CA3AF]" 
+                />
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-[13px] font-medium text-black ml-1">Password</label>
+            {/* Password Field */}
+            <div className="space-y-1.5">
+              <label className="text-[13px] font-bold text-[#000000]">Password</label>
               <div className="relative">
+                <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B7280]">
+                  <LockSimple size={18} />
+                </div>
                 <input 
                   type={showPassword ? "text" : "password"} 
                   required
                   placeholder="Enter your password" 
-                  className="w-full h-[50px] px-4 pr-12 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] outline-none transition-all" 
+                  className="w-full h-[48px] pl-11 pr-12 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#9CA3AF]" 
                 />
                 <button 
                   type="button" 
                   onClick={() => setShowPassword(!showPassword)} 
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-900 transition-colors"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#6B7280] hover:text-[#000000] transition-colors"
                 >
-                  {showPassword ? <EyeSlash size={22} /> : <Eye size={22} />}
+                  {showPassword ? <EyeSlash size={18} /> : <Eye size={18} />}
                 </button>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-2">
-              <label className="flex items-center gap-3 cursor-pointer group">
+            {/* Remember Me & Forgot Password */}
+            <div className="flex items-center justify-between pt-1">
+              <label className="flex items-center gap-2.5 cursor-pointer group">
                 <div 
                   onClick={() => setRememberMe(!rememberMe)}
-                  className={`w-5 h-5 rounded flex items-center justify-center border-2 transition-all ${rememberMe ? 'bg-[#1E6F73] border-[#1E6F73]' : 'border-gray-300 bg-white group-hover:border-gray-400'}`}
+                  className={`w-5 h-5 rounded-[4px] flex items-center justify-center border transition-all ${rememberMe ? 'bg-[#005F6B] border-[#005F6B]' : 'border-[#B5B5B5] bg-white'}`}
                 >
-                  {rememberMe && <div className="w-2.5 h-2.5 bg-white rounded-sm"></div>}
+                  {rememberMe && <div className="w-2.5 h-2.5 bg-white rounded-[1px]"></div>}
                 </div>
-                <span className="text-[13px] font-medium text-black select-none">Remember me</span>
+                <span className="text-[13px] font-medium text-[#374151] select-none">Remember me</span>
               </label>
-              <button type="button" className="text-[13px] font-bold text-[#1E6F73] hover:text-[#002b31] transition-colors">
-                Forgot password?
+              <button type="button" className="text-[13px] font-bold text-[#005F6B] hover:underline transition-colors">
+                Forgot password
               </button>
             </div>
 
+            {/* Login Button */}
             <button 
               type="submit" 
-              className="w-full bg-[#FFDD33] hover:bg-[#FACC15] text-[#002b31] h-[50px] rounded-[8px] font-bold text-[16px] transition-all shadow-sm mt-4 flex items-center justify-center transform active:scale-[0.98]"
+              className="w-full bg-[#005F6B] hover:bg-[#004D57] text-white h-[52px] rounded-[8px] font-bold text-[16px] transition-all shadow-[0_4px_0_rgba(0,0,0,0.1)] mt-2 flex items-center justify-center transform active:translate-y-[2px] active:shadow-none"
             >
-              Sign in
+              Login
             </button>
+
+            {/* Separator */}
+            <div className="relative flex items-center py-4">
+              <div className="flex-grow border-t border-[#D1D5DB]"></div>
+              <span className="flex-shrink mx-4 text-[13px] text-[#374151] font-medium">or continue</span>
+              <div className="flex-grow border-t border-[#D1D5DB]"></div>
+            </div>
+
+            {/* Suomi.fi Button */}
+            <button 
+              type="button"
+              className="w-full bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] h-[52px] rounded-[8px] font-bold text-[15px] transition-all flex items-center justify-center gap-2.5 shadow-sm"
+            >
+              <span className="text-[18px]">🇫🇮</span>
+              Suomi.fi authentication
+            </button>
+
+            {/* Sign Up Footer */}
+            <div className="pt-4 text-center">
+              <p className="text-[14px] text-[#000000] font-medium">
+                Don't have an account? <button className="text-[#005F6B] font-bold hover:underline">Sign up</button>
+              </p>
+            </div>
           </form>
         </div>
       </div>
-
-      {/* RIGHT SIDE: ILLUSTRATION - 60% width */}
-      <div className="hidden lg:flex w-[60%] bg-white relative items-center justify-center p-12 overflow-hidden">
-        {/* Top Right Icons */}
-        <div className="absolute top-10 right-10 flex items-center gap-4 text-black/60">
-           <Plus size={18} weight="bold" />
-           <Globe size={18} />
-           <div className="text-[18px]">🇬🇧</div>
-        </div>
-
-        <div className="w-full h-full flex items-center justify-center">
-          <img 
-            src="https://images.unsplash.com/vector-1770532406762-97e5a4028c73?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-            alt="Accounting Illustration" 
-            className="w-[80%] h-auto animate-in fade-in zoom-in-95 duration-700"
-          />
-        </div>
-      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default LoginScreen;
