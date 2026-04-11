@@ -26,18 +26,18 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
       </div>
 
       <div className="flex-1 flex items-center justify-center p-4">
-        <div className="w-full max-w-[420px] flex flex-col items-center">
+        <div className="w-full max-w-[480px] flex flex-col items-center">
           {/* Logo */}
-          <div className="mb-4">
-            <img src="https://i.ibb.co/99RKpWNq/Color-Black.png" alt="Kletta" className="h-12 w-auto" />
+          <div className="mb-3">
+            <img src="https://i.ibb.co/99RKpWNq/Color-Black.png" alt="Kletta" className="h-10 w-auto" />
           </div>
 
           {/* Title */}
-          <h1 className="text-[18px] font-bold text-[#000000] mb-8">Log in to your Kletta account</h1>
+          <h1 className="text-[17px] font-bold text-[#000000] mb-6">Log in to your Kletta account</h1>
 
           {/* Login Card */}
-          <div className="w-full bg-white rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-10 flex flex-col">
-            <form onSubmit={(e) => { e.preventDefault(); onLogin(); }} className="w-full space-y-5">
+          <div className="w-full bg-white rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-6 flex flex-col">
+            <form onSubmit={(e) => { e.preventDefault(); onLogin(); }} className="w-full space-y-4">
             {/* Email Field */}
             <div className="space-y-1.5">
               <label className="text-[13px] font-bold text-[#000000]">Email</label>
@@ -102,7 +102,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             </button>
 
             {/* Separator */}
-            <div className="relative flex items-center py-4">
+            <div className="relative flex items-center py-3">
               <div className="flex-grow border-t border-[#D1D5DB]"></div>
               <span className="flex-shrink mx-4 text-[13px] text-[#374151] font-medium">or continue</span>
               <div className="flex-grow border-t border-[#D1D5DB]"></div>
@@ -118,7 +118,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             </button>
 
             {/* Sign Up Footer */}
-            <div className="pt-4 text-center">
+            <div className="pt-3 text-center">
               <p className="text-[14px] text-[#000000] font-medium">
                 Don't have an account? <button className="text-[#005F6B] font-bold hover:underline">Sign up</button>
               </p>
