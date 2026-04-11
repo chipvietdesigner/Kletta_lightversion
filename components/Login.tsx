@@ -33,7 +33,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           </div>
 
           {/* Title */}
-          <h1 className="text-[17px] font-bold text-[#000000] mb-6">Log in to your Kletta account</h1>
+          <h1 className="text-[15px] font-medium text-[#000000] mb-6">Log in to your Kletta account</h1>
 
           {/* Login Content Area */}
           <div className="w-full p-6 flex flex-col">
@@ -49,7 +49,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                   type="email" 
                   required
                   placeholder="Enter your email" 
-                  className="w-full h-[48px] pl-11 pr-4 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#9CA3AF]" 
+                  className="w-full h-[48px] pl-11 pr-4 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#B5B5B5]" 
                 />
               </div>
             </div>
@@ -65,7 +65,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
                   type={showPassword ? "text" : "password"} 
                   required
                   placeholder="Enter your password" 
-                  className="w-full h-[48px] pl-11 pr-12 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#9CA3AF]" 
+                  className="w-full h-[48px] pl-11 pr-12 rounded-[8px] border border-[#B5B5B5] text-[14px] font-normal text-black focus:border-[#005F6B] outline-none transition-all placeholder:text-[#B5B5B5]" 
                 />
                 <button 
                   type="button" 
@@ -96,22 +96,22 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             {/* Login Button */}
             <button 
               type="submit" 
-              className="w-full bg-[#005F6B] hover:bg-[#004D57] text-white h-[52px] rounded-[8px] font-bold text-[16px] transition-all shadow-[0_4px_0_rgba(0,0,0,0.1)] mt-2 flex items-center justify-center transform active:translate-y-[2px] active:shadow-none"
+              className="w-full bg-[#005F6B] hover:bg-[#004D57] text-white h-[48px] rounded-[8px] font-bold text-[16px] transition-all shadow-[0_4px_0_rgba(0,0,0,0.1)] mt-2 flex items-center justify-center transform active:translate-y-[2px] active:shadow-none"
             >
               Login
             </button>
 
             {/* Separator */}
             <div className="relative flex items-center py-3">
-              <div className="flex-grow border-t border-[#D1D5DB]"></div>
+              <div className="flex-grow border-t border-[#B5B5B5]"></div>
               <span className="flex-shrink mx-4 text-[13px] text-[#374151] font-medium">or continue</span>
-              <div className="flex-grow border-t border-[#D1D5DB]"></div>
+              <div className="flex-grow border-t border-[#B5B5B5]"></div>
             </div>
 
             {/* Suomi.fi Button */}
             <button 
               type="button"
-              className="w-full bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] h-[52px] rounded-[8px] font-bold text-[15px] transition-all flex items-center justify-center gap-2.5 shadow-sm"
+              className="w-full bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] h-[48px] rounded-[8px] font-bold text-[15px] transition-all flex items-center justify-center gap-2.5 shadow-sm"
             >
               <span className="text-[18px]">🇫🇮</span>
               Suomi.fi authentication
