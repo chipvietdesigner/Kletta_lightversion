@@ -95,18 +95,26 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
     <>
     <div className={`w-[240px] min-w-[240px] flex flex-col h-full flex-shrink-0 font-sans relative z-20 transition-colors duration-300 ${isDark ? 'bg-[#002B2E] text-white border-r border-white/10' : 'bg-[#EFF4F5] text-[#1A1A18] border-r border-[#DDDDD6]'}`}>
       {/* Logo Section */}
-      <div className="pt-5 px-6 pb-4 flex items-center justify-between">
-        <div>
+      <div className="pt-6 px-6 pb-4 flex items-center justify-between">
+        <div className="flex flex-col">
           <img 
             src="https://i.ibb.co/99RKpWNq/Color-Black.png" 
             alt="Kletta Logo" 
-            className={`w-24 h-auto transition-all ${isDark ? 'brightness-0 invert' : ''}`} 
+            className={`w-[110px] h-auto transition-all ${isDark ? 'brightness-0 invert' : ''}`} 
           />
-          <div className={`mt-1 text-[12px] font-normal ${isDark ? 'text-white/60' : 'text-[#6B6B65]'}`}>Marcha Company LLC</div>
+          <div className="mt-8 flex flex-col gap-1.5">
+            <div className={`text-[13px] font-bold tracking-tight leading-tight ${isDark ? 'text-white' : 'text-[#0F3A3E]'}`}>
+              Accountant UK
+            </div>
+            <div className={`flex items-center gap-1.5 text-[12px] font-medium whitespace-nowrap ${isDark ? 'text-white/60' : 'text-[#616A6B]'}`}>
+              <div className="w-2.5 h-2.5 rounded-full bg-[#FFCC00] flex-shrink-0" />
+              <span>HMRC MTD mandated 0/11</span>
+            </div>
+          </div>
         </div>
         <button 
           onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          className={`p-1.5 rounded-[6px] transition-colors ${isDark ? 'text-white hover:bg-white/10' : 'text-[#6B6B65] hover:bg-white/60'}`}
+          className={`self-start mt-1 p-1.5 rounded-[6px] transition-colors ${isDark ? 'text-white hover:bg-white/10' : 'text-[#6B6B65] hover:bg-white/60'}`}
           title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
           <span className="material-symbols-outlined text-[18px]">
