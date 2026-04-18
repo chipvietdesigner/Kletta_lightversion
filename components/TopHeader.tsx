@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Info, 
   DownloadSimple, 
@@ -9,13 +9,17 @@ import {
   User,
   SealCheck
 } from '@phosphor-icons/react';
+import AccountInfoModal from './AccountInfoModal';
 
 interface TopHeaderProps {
   centerContent?: React.ReactNode;
 }
 
 const TopHeader: React.FC<TopHeaderProps> = ({ centerContent }) => {
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+
   return (
+    <>
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0 z-10">
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3">
@@ -24,7 +28,12 @@ const TopHeader: React.FC<TopHeaderProps> = ({ centerContent }) => {
              <div className="flex items-center gap-2">
                 <span className="text-[13px] font-bold text-[#000000]">Sam Smith</span>
                 <span className="text-[13px] font-bold text-[#0F3A3E] tracking-tight uppercase">PARTNER TRIAL</span>
-                <Info size={16} className="text-[#000000]" weight="bold" />
+                <button 
+                  onClick={() => setIsAccountModalOpen(true)}
+                  className="p-1 hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center"
+                >
+                  <Info size={16} className="text-[#000000]" weight="bold" />
+                </button>
              </div>
              <div className="flex items-center gap-1 text-[11px] text-[#0F3A3E] font-medium">
                 <span>Sam's Barber (1234567890</span>
@@ -35,10 +44,6 @@ const TopHeader: React.FC<TopHeaderProps> = ({ centerContent }) => {
                 <span className="ml-2 font-bold uppercase tracking-wider">Not set</span>
              </div>
           </div>
-        </div>
-        <div className="flex items-center gap-2">
-           <button className="bg-[#FFDD33] hover:bg-[#FACC15] text-[#002b31] text-xs font-medium px-3 py-1.5 rounded flex items-center gap-2 transition-colors"><DownloadSimple size={14} />diary.csv</button>
-           <button className="bg-[#FFDD33] hover:bg-[#FACC15] text-[#002b31] text-xs font-medium px-4 py-1.5 rounded transition-colors">Edit</button>
         </div>
       </div>
 
@@ -56,6 +61,12 @@ const TopHeader: React.FC<TopHeaderProps> = ({ centerContent }) => {
         </div>
       </div>
     </header>
+
+    <AccountInfoModal 
+      isOpen={isAccountModalOpen} 
+      onClose={() => setIsAccountModalOpen(false)} 
+    />
+    </>
   );
 };
 

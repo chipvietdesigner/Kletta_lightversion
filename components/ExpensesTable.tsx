@@ -245,7 +245,7 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
                   <span>Total amount</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
                 </div>
-                <div className="text-[13px] font-bold text-[#991B1B]">{formatCurrency(totals.total)}</div>
+                <div className="text-[13px] font-bold text-[#005A66]">{formatCurrency(totals.total)}</div>
               </th>
 
               <th className="px-4 py-3 font-medium text-[12px] w-[100px] text-left align-middle">

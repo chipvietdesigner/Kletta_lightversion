@@ -12,7 +12,7 @@ const NavIcon: React.FC<{ name: string; isActive?: boolean; className?: string }
     className={`material-symbols-outlined ${className}`} 
     style={{ 
       fontSize: '20px', 
-      fontVariationSettings: isActive ? "'FILL' 1, 'wght' 600" : "'FILL' 0, 'wght' 400" 
+      fontVariationSettings: isActive ? "'FILL' 0, 'wght' 600" : "'FILL' 0, 'wght' 400" 
     }}
   >
     {name}
@@ -56,7 +56,7 @@ const NavItem: React.FC<{
           : (isDark ? "text-white" : "text-[#1A1A18]")
         } 
       />
-      <span className={`font-sans text-[14px] tracking-tight truncate ${isActive ? 'font-bold' : 'font-medium'}`}>
+      <span className={`font-sans text-[13px] tracking-tight truncate ${isActive ? 'font-bold' : 'font-medium'}`}>
         {item.type}
       </span>
     </button>
@@ -140,7 +140,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
                 className={activeItem === NavItemType.AI_SUPPORT ? "text-white" : (isDark ? "text-[#FFDD33]" : "text-[#005A66]")} 
               />
               <div className="flex flex-col">
-                <span className={`text-[14px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'font-bold text-white' : (isDark ? 'font-medium text-white' : 'font-medium text-[#1A1A18]')}`}>AI Support</span>
+                <span className={`text-[13px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'font-bold text-white' : (isDark ? 'font-medium text-white' : 'font-medium text-[#1A1A18]')}`}>AI Support</span>
                 <span className={`text-[11px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'text-white/80' : (isDark ? 'text-white/60' : 'text-[#6B6B65]')}`}>Intelligence</span>
               </div>
             </div>
@@ -161,7 +161,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
               MV
             </div>
             <div className="flex-1 min-w-0">
-              <div className={`text-[14px] font-bold truncate ${isDark ? 'text-white' : 'text-[#1A1A18]'}`}>Matti V.</div>
+              <div className={`text-[13px] font-bold truncate ${isDark ? 'text-white' : 'text-[#1A1A18]'}`}>Matti V.</div>
               <div className={`text-[12px] truncate ${isDark ? 'text-white/60' : 'text-[#6B6B65]'}`}>Esimerkki Oy</div>
             </div>
             <NavIcon name="expand_more" className={isDark ? "text-white/60" : "text-[#6B6B65]"} />
@@ -181,7 +181,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
         <div className="space-y-5">
           <button 
             onClick={() => setIsClientLoginOpen(true)} 
-            className={`flex items-center gap-3 text-[14px] font-medium hover:opacity-80 transition-opacity ${isDark ? 'text-white' : 'text-[#1A1A18]'}`}
+            className={`flex items-center gap-3 text-[13px] font-medium hover:opacity-80 transition-opacity ${isDark ? 'text-white' : 'text-[#1A1A18]'}`}
           >
             <NavIcon name="description" />
             Login to Client App
@@ -189,7 +189,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
           
           <button 
             onClick={onLogout} 
-            className="flex items-center gap-3 text-[#E05A2B] text-[14px] font-medium hover:opacity-80 transition-opacity"
+            className={`flex items-center gap-3 text-[13px] font-medium hover:opacity-80 transition-opacity ${isDark ? 'text-white' : 'text-[#000000]'}`}
           >
             <NavIcon name="logout" />
             Logout
