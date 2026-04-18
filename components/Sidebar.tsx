@@ -23,22 +23,38 @@ const NavItem: React.FC<{
   item: { type: NavItemType; iconName: string }; 
   activeItem: NavItemType; 
   setActiveItem: (item: NavItemType) => void;
-}> = ({ item, activeItem, setActiveItem }) => {
+  isMain?: boolean;
+  theme: 'light' | 'dark';
+}> = ({ item, activeItem, setActiveItem, isMain, theme }) => {
   const isActive = activeItem === item.type;
+  const isDark = theme === 'dark';
+  
+  const getActiveStyles = () => {
+    if (isMain && isDark) {
+      return 'bg-[#FFDD33] text-[#000000]';
+    }
+    return 'bg-[#005A66] text-white';
+  };
+
+  const getInactiveStyles = () => {
+    if (isDark) return 'text-white hover:bg-white/10';
+    return 'text-[#1A1A18] hover:bg-[#E2E1DC]';
+  };
   
   return (
     <button
       onClick={() => setActiveItem(item.type)}
-      className={`w-full h-[36px] flex items-center gap-3 px-3 transition-all duration-200 rounded-[10px] group ${
-        isActive 
-          ? 'bg-[#005A66] text-white' 
-          : 'text-[#1A1A18] hover:bg-[#E2E1DC]'
+      className={`w-full h-[36px] flex items-center gap-3 px-3 transition-all duration-200 rounded-[6px] group ${
+        isActive ? getActiveStyles() : getInactiveStyles()
       }`}
     >
       <NavIcon 
         name={item.iconName} 
         isActive={isActive}
-        className={isActive ? "text-white" : "text-[#1A1A18]"} 
+        className={isActive 
+          ? (isMain && isDark ? "text-[#000000]" : "text-white") 
+          : (isDark ? "text-white" : "text-[#1A1A18]")
+        } 
       />
       <span className={`font-sans text-[14px] tracking-tight truncate ${isActive ? 'font-bold' : 'font-medium'}`}>
         {item.type}
@@ -50,6 +66,9 @@ const NavItem: React.FC<{
 const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }) => {
   const [isAIEnabled, setIsAIEnabled] = useState(false);
   const [isClientLoginOpen, setIsClientLoginOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const isDark = theme === 'dark';
 
   const topNavItems = [
     { type: NavItemType.WELCOME, iconName: 'waving_hand' },
@@ -74,18 +93,33 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
 
   return (
     <>
-    <div className="w-[240px] min-w-[240px] bg-[#EFF4F5] text-[#1A1A18] flex flex-col h-full flex-shrink-0 font-sans border-r border-[#DDDDD6] relative z-20">
+    <div className={`w-[240px] min-w-[240px] flex flex-col h-full flex-shrink-0 font-sans relative z-20 transition-colors duration-300 ${isDark ? 'bg-[#002B2E] text-white border-r border-white/10' : 'bg-[#EFF4F5] text-[#1A1A18] border-r border-[#DDDDD6]'}`}>
       {/* Logo Section */}
-      <div className="pt-5 px-6 pb-4">
-        <img src="https://i.ibb.co/99RKpWNq/Color-Black.png" alt="Kletta Logo" className="w-24 h-auto" />
-        <div className="mt-1 text-[12px] font-normal text-[#6B6B65]">Marcha Company LLC</div>
+      <div className="pt-5 px-6 pb-4 flex items-center justify-between">
+        <div>
+          <img 
+            src="https://i.ibb.co/99RKpWNq/Color-Black.png" 
+            alt="Kletta Logo" 
+            className={`w-24 h-auto transition-all ${isDark ? 'brightness-0 invert' : ''}`} 
+          />
+          <div className={`mt-1 text-[12px] font-normal ${isDark ? 'text-white/60' : 'text-[#6B6B65]'}`}>Marcha Company LLC</div>
+        </div>
+        <button 
+          onClick={() => setTheme(isDark ? 'light' : 'dark')}
+          className={`p-1.5 rounded-[6px] transition-colors ${isDark ? 'text-white hover:bg-white/10' : 'text-[#6B6B65] hover:bg-white/60'}`}
+          title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          <span className="material-symbols-outlined text-[18px]">
+            {isDark ? 'light_mode' : 'dark_mode'}
+          </span>
+        </button>
       </div>
       
       <div className="flex-1 overflow-y-auto custom-scrollbar px-3">
         {/* Top Nav Section */}
         <div className="mt-2 space-y-0.5">
           {topNavItems.map((item) => (
-            <NavItem key={item.type} item={item} activeItem={activeItem} setActiveItem={setActiveItem} />
+            <NavItem key={item.type} item={item} activeItem={activeItem} setActiveItem={setActiveItem} theme={theme} />
           ))}
         </div>
 
@@ -93,58 +127,61 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
         <div className="mt-1 mb-3">
           <div 
             onClick={() => setActiveItem(NavItemType.AI_SUPPORT)} 
-            className={`h-[36px] flex items-center justify-between px-3 cursor-pointer transition-all duration-200 rounded-[10px] ${activeItem === NavItemType.AI_SUPPORT ? 'bg-[#005A66] text-white' : 'hover:bg-[#E2E1DC]'}`}
+            className={`h-[36px] flex items-center justify-between px-3 cursor-pointer transition-all duration-200 rounded-[6px] ${
+              activeItem === NavItemType.AI_SUPPORT 
+                ? 'bg-[#005A66] text-white' 
+                : (isDark ? 'hover:bg-white/10 text-white' : 'hover:bg-[#E2E1DC] text-[#1A1A18]')
+            }`}
           >
             <div className="flex items-center gap-3">
               <NavIcon 
                 name="auto_awesome" 
                 isActive={activeItem === NavItemType.AI_SUPPORT}
-                className={activeItem === NavItemType.AI_SUPPORT ? "text-white" : "text-[#005A66]"} 
+                className={activeItem === NavItemType.AI_SUPPORT ? "text-white" : (isDark ? "text-[#FFDD33]" : "text-[#005A66]")} 
               />
               <div className="flex flex-col">
-                <span className={`text-[14px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'font-bold text-white' : 'font-medium text-[#1A1A18]'}`}>AI Support</span>
-                <span className={`text-[11px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'text-white/80' : 'text-[#6B6B65]'}`}>Intelligence</span>
+                <span className={`text-[14px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'font-bold text-white' : (isDark ? 'font-medium text-white' : 'font-medium text-[#1A1A18]')}`}>AI Support</span>
+                <span className={`text-[11px] leading-tight ${activeItem === NavItemType.AI_SUPPORT ? 'text-white/80' : (isDark ? 'text-white/60' : 'text-[#6B6B65]')}`}>Intelligence</span>
               </div>
             </div>
             <button 
               onClick={(e) => { e.stopPropagation(); setIsAIEnabled(!isAIEnabled); }} 
-              className={`w-[36px] h-[20px] rounded-full relative transition-colors duration-300 focus:outline-none ${isAIEnabled ? 'bg-[#1D6B5A]' : 'bg-[#C5C5BE]'}`}
+              className={`w-[36px] h-[20px] rounded-full relative transition-colors duration-300 focus:outline-none ${isAIEnabled ? 'bg-[#1D6B5A]' : (isDark ? 'bg-white/20' : 'bg-[#C5C5BE]')}`}
             >
               <div className={`absolute top-[2px] w-[16px] h-[16px] bg-white rounded-full shadow-sm transform transition-transform duration-300 ${isAIEnabled ? 'left-[18px]' : 'left-[2px]'}`}></div>
             </button>
           </div>
         </div>
 
-        <div className="h-[1px] bg-[#DDDDD6] my-3 mx-3"></div>
+        <div className={`h-[1px] my-3 mx-3 ${isDark ? 'bg-white/10' : 'bg-[#DDDDD6]'}`}></div>
 
-        {/* User Account Section */}
-        <div className="px-3 py-3 mb-2">
+      <div className="px-3 py-3 mb-2">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-[#005A66] flex items-center justify-center text-white font-bold text-[12px] flex-shrink-0">
               MV
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-[14px] font-bold text-[#1A1A18] truncate">Matti V.</div>
-              <div className="text-[12px] text-[#6B6B65] truncate">Esimerkki Oy</div>
+              <div className={`text-[14px] font-bold truncate ${isDark ? 'text-white' : 'text-[#1A1A18]'}`}>Matti V.</div>
+              <div className={`text-[12px] truncate ${isDark ? 'text-white/60' : 'text-[#6B6B65]'}`}>Esimerkki Oy</div>
             </div>
-            <NavIcon name="expand_more" className="text-[#6B6B65] flex-shrink-0" />
+            <NavIcon name="expand_more" className={isDark ? "text-white/60" : "text-[#6B6B65]"} />
           </div>
         </div>
 
         {/* Main Nav Section */}
         <div className="space-y-0.5 pb-6">
           {mainNavItems.map((item) => (
-            <NavItem key={item.type} item={item} activeItem={activeItem} setActiveItem={setActiveItem} />
+            <NavItem key={item.type} item={item} activeItem={activeItem} setActiveItem={setActiveItem} isMain theme={theme} />
           ))}
         </div>
       </div>
 
       {/* Bottom Actions */}
-      <div className="flex-shrink-0 px-6 py-6 border-t border-[#DDDDD6]">
+      <div className={`flex-shrink-0 px-6 py-6 border-t ${isDark ? 'border-white/10' : 'border-[#DDDDD6]'}`}>
         <div className="space-y-5">
           <button 
             onClick={() => setIsClientLoginOpen(true)} 
-            className="flex items-center gap-3 text-[#1A1A18] text-[14px] font-medium hover:opacity-80 transition-opacity"
+            className={`flex items-center gap-3 text-[14px] font-medium hover:opacity-80 transition-opacity ${isDark ? 'text-white' : 'text-[#1A1A18]'}`}
           >
             <NavIcon name="description" />
             Login to Client App

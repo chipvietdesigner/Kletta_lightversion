@@ -236,10 +236,10 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
 
   return (
     <div className="w-full flex flex-col flex-1 overflow-hidden mt-0 bg-white border border-[#E5E5E0] rounded-xl">
-      <div className="overflow-auto flex-1 custom-scrollbar flex flex-col">
-        <table className="text-left table-fixed w-full border-collapse">
-          <thead className="bg-[#F9FAFB] text-[#000000] sticky top-0 z-50">
-            <tr className="border-b border-[#E5E7EB]">
+      <div className="overflow-auto flex-1 custom-scrollbar flex flex-col bg-white">
+        <table className="text-left table-fixed w-full border-collapse bg-white">
+          <thead className="bg-[#F9FAFB] text-[#000000] sticky top-0 z-50 shadow-sm">
+            <tr className="border-b border-[#E5E7EB] h-[62px]">
               <th className="px-4 py-3 font-medium text-[12px] w-[140px] text-left align-top">
                 <div className="flex items-center gap-1 mb-1">
                   <span>Total amount</span>
@@ -301,8 +301,9 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
           <tbody className="bg-white">
             {groupKeys.map((groupKey) => (
               <React.Fragment key={groupKey}>
-                <tr className="bg-[#F3F4F6] h-[32px] border-y border-[#E5E7EB]">
-                  <td colSpan={14} className="px-4 py-0 align-middle">
+                {/* Group Header */}
+                <tr className="bg-[#EFF4F5] h-[32px] border-b border-[#E5E7EB] sticky top-[62px] z-40">
+                  <td colSpan={14} className="px-4 py-0 align-middle bg-[#EFF4F5]">
                     <span className="text-[13px] font-bold text-[#111827]">{groupKey}</span>
                   </td>
                 </tr>
