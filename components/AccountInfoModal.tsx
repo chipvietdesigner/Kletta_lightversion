@@ -16,9 +16,9 @@ const AccountInfoModal: React.FC<AccountInfoModalProps> = ({ isOpen, onClose }) 
 
   const InfoRow = ({ label, value, isVerified }: { label: string; value: React.ReactNode; isVerified?: boolean }) => (
     <div className="flex justify-between items-center py-2">
-      <span className="text-[14px] text-[#6B6B65] font-normal">{label}</span>
+      <span className="text-[13px] text-[#6B6B65] font-normal">{label}</span>
       <div className="flex items-center gap-1.5">
-        <span className="text-[14px] text-[#1A1A18] font-bold text-right">{value}</span>
+        <span className="text-[13px] text-[#1A1A18] font-bold text-right">{value}</span>
         {isVerified && <SealCheck size={16} weight="fill" className="text-[#FFCC00]" />}
       </div>
     </div>
@@ -87,13 +87,13 @@ const AccountInfoModal: React.FC<AccountInfoModalProps> = ({ isOpen, onClose }) 
         {/* Footer */}
         <div className="px-6 py-5 bg-white border-t border-[#E5E5E0] flex justify-end gap-3">
           <button 
-            className="flex items-center gap-2 px-4 h-11 border border-[#B5B5B5] rounded-[10px] text-[14px] font-bold text-[#1A1A18] hover:bg-gray-50 transition-colors shadow-sm"
+            className="flex items-center gap-2 px-4 h-[36px] border border-[#B5B5B5] rounded-[6px] text-[13px] font-bold text-[#1A1A18] hover:bg-gray-50 transition-colors shadow-sm"
           >
             <DownloadSimple size={18} weight="bold" />
             Download diary
           </button>
           <button 
-            className="flex items-center gap-2 px-6 h-11 bg-[#FFDD33] rounded-[10px] text-[14px] font-bold text-[#1A1A18] hover:shadow-md transition-all shadow-sm border border-[#1A1A18]"
+            className="flex items-center gap-2 px-6 h-[36px] bg-[#FFDD33] rounded-[6px] text-[13px] font-bold text-[#1A1A18] hover:shadow-md transition-all shadow-sm border border-[#1A1A18]"
             style={{ boxShadow: '0 4px 0 0 #1A1A18' }}
           >
             <PencilSimple size={18} weight="bold" />

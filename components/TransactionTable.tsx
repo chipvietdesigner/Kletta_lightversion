@@ -562,7 +562,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                 placeholder="Search tax rate..."
                 value={taxSearch}
                 onChange={(e) => setTaxSearch(e.target.value)}
-                className="w-full h-[36px] pl-9 pr-3 bg-[#F9FAFB] border border-[#B5B5B5] rounded-[8px] text-[13px] focus:outline-none focus:border-[#FFDD33]"
+                className="w-full h-[36px] pl-9 pr-3 bg-[#F9FAFB] border border-[#B5B5B5] rounded-[6px] text-[13px] focus:outline-none focus:border-[#FFDD33]"
                 autoFocus
               />
             </div>
@@ -590,7 +590,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
             </button>
             <button 
               onClick={handleApplyVat}
-              className="px-5 py-2 bg-[#FFDD33] hover:bg-[#FACC15] text-black text-[13px] font-bold rounded-[8px] transition-colors shadow-sm"
+              className="h-[32px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-black text-[13px] font-bold rounded-[6px] transition-colors shadow-sm"
             >
               Apply
             </button>

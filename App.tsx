@@ -958,7 +958,7 @@ const App: React.FC = () => {
                   value={vatSearch}
                   onChange={(e) => setVatSearch(e.target.value)}
                   placeholder="Search..."
-                  className="h-[42px] pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-xl text-[14px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
+                  className="h-[36px] pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-[6px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
                 />
              </div>
            </div>
@@ -978,7 +978,7 @@ const App: React.FC = () => {
                <div className="inline-flex bg-[#F1EDDA] p-1 rounded-xl self-start">
                  <button 
                    onClick={() => setTaxReturnTab('SENT')}
-                   className={`px-5 py-2 text-[14px] font-medium rounded-lg transition-all ${
+                   className={`px-5 py-2 text-[13px] font-medium rounded-[6px] transition-all ${
                      taxReturnTab === 'SENT' 
                        ? 'bg-white text-[#0F2F33] shadow-sm' 
                        : 'text-[#000000] hover:text-[#0F2F33]'
@@ -988,7 +988,7 @@ const App: React.FC = () => {
                  </button>
                  <button 
                    onClick={() => setTaxReturnTab('NOT SENT')}
-                   className={`px-5 py-2 text-[14px] font-medium rounded-lg transition-all ${
+                   className={`px-5 py-2 text-[13px] font-medium rounded-[6px] transition-all ${
                      taxReturnTab === 'NOT SENT' 
                        ? 'bg-white text-[#0F2F33] shadow-sm' 
                        : 'text-[#000000] hover:text-[#0F2F33]'
@@ -1003,12 +1003,12 @@ const App: React.FC = () => {
              <div className="flex items-center gap-4 self-start mt-1">
                 {/* Year Dropdown */}
                 <div className="flex items-center gap-2">
-                   <span className="text-[14px] text-[#000000] font-medium">Tax return year</span>
+                   <span className="text-[13px] text-[#000000] font-medium">Tax return year</span>
                    <div className="relative">
                       <select 
                         value={taxReturnYear}
                         onChange={(e) => setTaxReturnYear(e.target.value)}
-                        className="h-[42px] pl-4 pr-10 bg-white border border-[#E5E7EB] rounded-xl text-[14px] text-[#0F2F33] font-medium focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer"
+                        className="h-[36px] pl-4 pr-10 bg-white border border-[#E5E7EB] rounded-[6px] text-[13px] text-[#0F2F33] font-medium focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer"
                       >
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
@@ -1029,7 +1029,7 @@ const App: React.FC = () => {
                     value={taxReturnSearch}
                     onChange={(e) => setTaxReturnSearch(e.target.value)}
                     placeholder="Search..."
-                    className="h-[42px] pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-xl text-[14px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
+                    className="h-[36px] pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-[6px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
                   />
                 </div>
              </div>
@@ -1051,7 +1051,7 @@ const App: React.FC = () => {
            {/* Toolbar (Search & Filter) */}
            <div className="mb-4 flex items-center justify-between">
              <div className="flex items-center gap-2">
-                <button className="h-[42px] px-4 bg-white border border-[#E5E7EB] rounded-xl text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                <button className="h-[36px] px-4 bg-white border border-[#E5E7EB] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                    All statuses
                    <CaretDown size={14} className="text-[#9CA3AF]" />
                 </button>
@@ -1064,10 +1064,10 @@ const App: React.FC = () => {
                   <input 
                     type="text" 
                     placeholder="Search invitations..."
-                    className="h-[42px] pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-xl text-[14px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
+                    className="h-[36px] pl-10 pr-4 bg-white border border-[#E5E7EB] rounded-[6px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[260px] focus:outline-none font-normal"
                   />
                 </div>
-                <button className="h-[42px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[14px] font-medium rounded-xl flex items-center gap-2 transition-colors shadow-sm">
+                <button className="h-[36px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[13px] font-medium rounded-[6px] flex items-center gap-2 transition-colors shadow-sm">
                    <Plus size={16} weight="bold" />
                    Create Invitation
                 </button>
@@ -1088,23 +1088,23 @@ const App: React.FC = () => {
            </div>
 
            {/* Toolbar (Filter & Actions) */}
-           <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                   <div className="relative">
-                     <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                     <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                        Last 30 days
                        <CaretDown size={14} className="text-[#9CA3AF]" />
                      </button>
                   </div>
                   <div className="relative">
-                     <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                     <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                        <Car size={16} className="text-[#9CA3AF]" />
                        All Vehicles
                        <CaretDown size={14} className="text-[#9CA3AF]" />
                      </button>
                   </div>
                   <div className="relative">
-                     <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                     <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                        <SteeringWheel size={16} className="text-[#9CA3AF]" />
                        All Purposes
                        <CaretDown size={14} className="text-[#9CA3AF]" />
@@ -1119,10 +1119,10 @@ const App: React.FC = () => {
                         <input 
                           type="text" 
                           placeholder="Search..."
-                          className="h-[42px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[220px] focus:outline-none font-normal"
+                          className="h-[36px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[220px] focus:outline-none font-normal"
                         />
                     </div>
-                    <button className="h-[42px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[14px] font-medium rounded-[8px] flex items-center gap-2 transition-colors shadow-sm whitespace-nowrap">
+                    <button className="h-[36px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[13px] font-medium rounded-[6px] flex items-center gap-2 transition-colors shadow-sm whitespace-nowrap">
                        <Plus size={16} weight="bold" />
                        Add Trip
                     </button>
@@ -1153,7 +1153,7 @@ const App: React.FC = () => {
                         <button
                           key={status}
                           onClick={() => setInvoiceStatusFilter(status)}
-                          className={`px-5 py-2 text-[14px] font-medium rounded-lg transition-all ${
+                          className={`px-5 py-2 text-[13px] font-medium rounded-[6px] transition-all ${
                             invoiceStatusFilter === status 
                               ? 'bg-white text-[#0F2F33] shadow-sm' 
                               : 'text-[#000000] hover:text-[#0F2F33]'
@@ -1165,11 +1165,11 @@ const App: React.FC = () => {
                   </div>
               </div>
                <div className="flex items-center gap-3">
-                    <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                    <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                        Last 30 days
                        <CaretDown size={14} className="text-[#9CA3AF]" />
                     </button>
-                    <button className="h-[42px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[14px] font-medium rounded-[8px] flex items-center gap-2 transition-colors shadow-sm">
+                    <button className="h-[36px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[13px] font-medium rounded-[6px] flex items-center gap-2 transition-colors shadow-sm">
                        <Plus size={16} weight="bold" />
                        Create Invoice
                     </button>
@@ -1194,7 +1194,7 @@ const App: React.FC = () => {
            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
                   <div className="relative">
-                     <select className="h-[42px] pl-4 pr-10 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer min-w-[280px]">
+                     <select className="h-[36px] pl-4 pr-10 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer min-w-[280px]">
                         <option>£100.00 Plaid Standard Current Account</option>
                         <option>Savings</option>
                      </select>
@@ -1202,7 +1202,7 @@ const App: React.FC = () => {
                         <CaretDown size={14} weight="bold" />
                      </div>
                   </div>
-                  <div className="flex items-center gap-2 h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
+                  <div className="flex items-center gap-2 h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
                      <span className="text-[#6B7280] text-[13px] font-normal mr-1">First fetch date</span>
                      <span className="text-[13px] text-[#0F2F33] font-medium">6 April 2025</span>
                      <CalendarBlank size={16} className="text-[#9CA3AF] ml-2" />
@@ -1213,7 +1213,7 @@ const App: React.FC = () => {
            <TableToolbar 
              placeholder="Search by amount or description"
              secondaryAction={
-               <div className="flex items-center gap-2 h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
+               <div className="flex items-center gap-2 h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
                  <span className="text-[#6B7280] text-[13px] font-normal mr-1">First fetch date</span>
                  <span className="text-[13px] text-[#0F2F33] font-medium">6 April 2025</span>
                  <CalendarBlank size={16} className="text-[#9CA3AF] ml-2" />
@@ -1337,15 +1337,15 @@ const App: React.FC = () => {
             placeholder="Search clients..."
             leftActions={
               <div className="flex items-center gap-2">
-                 <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                 <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                     All statuses
                     <CaretDown size={14} className="text-[#9CA3AF]" />
                  </button>
-                 <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                 <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                     All countries
                     <CaretDown size={14} className="text-[#9CA3AF]" />
                  </button>
-                 <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                 <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                     All plans
                     <CaretDown size={14} className="text-[#9CA3AF]" />
                  </button>
@@ -1358,11 +1358,11 @@ const App: React.FC = () => {
             secondaryAction={
               <div className="flex items-center gap-3">
                  <div className="h-6 w-px bg-[#E5E7EB] mx-1"></div>
-                 <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                 <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                     <Upload size={16} className="text-[#9CA3AF]" />
                     Import Clients
                  </button>
-                 <button className="h-[42px] px-4 bg-white border border-[#B5B5B5] rounded-[8px] text-[14px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
+                 <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                     Invite with link
                  </button>
               </div>

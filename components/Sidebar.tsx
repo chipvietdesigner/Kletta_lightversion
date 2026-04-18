@@ -218,7 +218,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeItem, setActiveItem, onLogout }
                  <NavIcon name="smartphone" className="text-[#1D6B5A]" style={{ fontSize: '32px' }} />
                </div>
                <h2 className="text-[22px] font-medium text-[#1A1A18] mb-2 tracking-tight">Login to Client App</h2>
-               <p className="text-[14px] text-[#6B6B65] leading-relaxed max-w-[280px] mx-auto">Enter these credentials on the client's device to access the Kletta dashboard.</p>
+               <p className="text-[13px] text-[#6B6B65] leading-relaxed max-w-[280px] mx-auto">Enter these credentials on the client's device to access the Kletta dashboard.</p>
              </div>
              <div className="px-8 pb-8 space-y-8">
                 <div className="bg-[#F9FAFB] border border-[#DDDDD6] rounded-xl p-6 shadow-sm space-y-5">
