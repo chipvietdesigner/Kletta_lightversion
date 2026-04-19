@@ -403,7 +403,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                         >
                           <div className="flex items-center gap-2 hover:underline decoration-[#D1D5DB] underline-offset-4 overflow-hidden">
                             <span className="material-symbols-outlined text-[#000000] flex-shrink-0" style={{ fontSize: '18px' }}>{getCategoryIcon(t.category)}</span>
-                            <span className="text-[#000000] text-[13px] font-medium truncate">{t.category}</span>
+                            <span className="text-[#000000] text-[13px] font-normal truncate">{t.category}</span>
                             <CaretDown size={10} className="text-[#000000] ml-1 flex-shrink-0" />
                           </div>
 
@@ -444,7 +444,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                       {/* Customer */}
                       <td className="p-0" onMouseEnter={() => setHoveredColKey('customer')}>
                         <div className="h-full flex items-center px-4 relative overflow-hidden">
-                          <span className="text-[#000000] text-[13px] font-medium truncate">{t.customer}</span>
+                          <span className="text-[#000000] text-[13px] font-normal truncate">{t.customer}</span>
                         </div>
                       </td>
 
