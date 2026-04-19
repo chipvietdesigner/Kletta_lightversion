@@ -1495,7 +1495,6 @@ const App: React.FC = () => {
           {/* Logs-style Toolbar - Removed Spacer */}
           <TransactionTable transactions={filteredTransactions} />
           <CreateIncomeModal isOpen={isCreateIncomeModalOpen} onClose={() => setIsCreateIncomeModalOpen(false)} />
-          <DateRangePickerModal isOpen={isDateRangePickerOpen} onClose={() => setIsDateRangePickerOpen(false)} />
         </main>
     );
   };
@@ -1511,6 +1510,7 @@ const App: React.FC = () => {
       <div className="flex-1 flex flex-col min-w-0 bg-white">
         <TopHeader />
         {renderContent()}
+        <DateRangePickerModal isOpen={isDateRangePickerOpen} onClose={() => setIsDateRangePickerOpen(false)} />
       </div>
     </div>
   );
