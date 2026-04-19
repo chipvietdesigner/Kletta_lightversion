@@ -241,7 +241,7 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
         <table className="text-left table-fixed w-full border-collapse bg-white">
           <thead className="bg-[#F9FAFB] text-[#000000] sticky top-0 z-50 shadow-sm">
             <tr className="border-b border-[#E5E7EB] h-[62px]">
-              <th className="px-4 py-3 font-medium text-[12px] w-[140px] text-left align-top">
+              <th className="px-4 py-3 font-medium text-[12px] w-[154px] text-left align-top">
                 <div className="flex items-center gap-1 mb-1">
                   <span>Total amount</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
@@ -249,51 +249,51 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
                 <div className="text-[13px] font-bold text-[#005A66]">{formatCurrency(totals.total)}</div>
               </th>
 
-              <th className="px-4 py-3 font-medium text-[12px] w-[100px] text-left align-middle">
+              <th className="px-4 py-3 font-medium text-[12px] w-[110px] text-left align-middle">
                 <span>Document</span>
               </th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[220px] text-left align-middle">
+              <th className="px-4 py-3 font-medium text-[12px] w-[242px] text-left align-middle">
                 <div className="flex items-center gap-1">
                   <span>Category</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
                 </div>
               </th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[110px] text-left align-middle">
+              <th className="px-4 py-3 font-medium text-[12px] w-[121px] text-left align-middle">
                 <div className="flex items-center gap-1">
                   <span>Date</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
                 </div>
               </th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[200px] text-left align-middle">
+              <th className="px-4 py-3 font-medium text-[12px] w-[220px] text-left align-middle">
                 <div className="flex items-center gap-1">
                   <span>Supplier</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
                 </div>
               </th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[120px] text-left align-middle">Receipt ID</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[132px] text-left align-middle">Receipt ID</th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[180px] text-left align-middle">Reconciled</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[198px] text-left align-middle">Reconciled</th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[200px] text-left align-middle">Tax rate</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[220px] text-left align-middle">Tax rate</th>
 
-              <th className="px-4 py-3 font-medium text-[12px] w-[80px] text-center align-middle">VAT%</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[88px] text-center align-middle">VAT%</th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[100px] text-right align-middle">VAT</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[110px] text-right align-middle">VAT</th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[120px] text-right align-middle">
+              <th className="px-4 py-3 font-medium text-[12px] w-[132px] text-right align-middle">
                 <div className="flex items-center justify-end gap-1">
                   <span>Subtotal</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
                 </div>
               </th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[70px] text-center align-middle">Verified</th>
-              <th className="px-4 py-3 font-medium text-[12px] w-[80px] text-center align-middle">AI Verified</th>
-              <th className="px-4 py-3 font-medium text-[12px] w-[60px] text-center align-middle">Actions</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[77px] text-center align-middle">Verified</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[88px] text-center align-middle">AI Verified</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[66px] text-center align-middle">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white">

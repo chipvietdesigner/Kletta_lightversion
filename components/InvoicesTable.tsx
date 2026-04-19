@@ -40,14 +40,14 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices, statusFilter })
         <table className="text-left table-fixed w-full border-collapse">
           <thead className="bg-[#F9FAFB] text-[#000000] sticky top-0 z-10 h-[48px]">
             <tr>
-              <th className="px-4 font-medium text-[13px] w-[120px] border-b border-[#E5E7EB]">Invoice #</th>
-              <th className="px-4 font-medium text-[13px] w-[100px] border-b border-[#E5E7EB]">Date</th>
-              <th className="px-4 font-medium text-[13px] w-[240px] border-b border-[#E5E7EB]">Customer</th>
-              <th className="px-4 font-medium text-[13px] w-[100px] border-b border-[#E5E7EB]">Due Date</th>
-              <th className="px-4 font-medium text-[13px] w-[120px] text-center border-b border-[#E5E7EB]">Status</th>
-              <th className="px-4 font-medium text-[13px] w-[80px] text-center border-b border-[#E5E7EB]">Doc</th>
-              <th className="px-4 font-medium text-[13px] w-[140px] text-right border-b border-[#E5E7EB]">Total</th>
-              <th className="px-4 font-medium text-[13px] w-[180px] text-right border-b border-[#E5E7EB]">Actions</th>
+              <th className="px-4 font-medium text-[13px] w-[132px] border-b border-[#E5E7EB]">Invoice #</th>
+              <th className="px-4 font-medium text-[13px] w-[110px] border-b border-[#E5E7EB]">Date</th>
+              <th className="px-4 font-medium text-[13px] w-[264px] border-b border-[#E5E7EB]">Customer</th>
+              <th className="px-4 font-medium text-[13px] w-[110px] border-b border-[#E5E7EB]">Due Date</th>
+              <th className="px-4 font-medium text-[13px] w-[132px] text-center border-b border-[#E5E7EB]">Status</th>
+              <th className="px-4 font-medium text-[13px] w-[88px] text-center border-b border-[#E5E7EB]">Doc</th>
+              <th className="px-4 font-medium text-[13px] w-[154px] text-right border-b border-[#E5E7EB]">Total</th>
+              <th className="px-4 font-medium text-[13px] w-[198px] text-right border-b border-[#E5E7EB]">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white">
