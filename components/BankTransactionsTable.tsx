@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BankTransaction, ReconciledItem } from '../types';
-import { X, Image, FileText } from '@phosphor-icons/react';
+import { X, Image, FileText, CaretUpDown } from '@phosphor-icons/react';
 
 interface BankTransactionsTableProps {
   data: BankTransaction[];
@@ -24,7 +24,12 @@ const BankTransactionsTable: React.FC<BankTransactionsTableProps> = ({ data, onR
         <table className="text-left table-fixed w-full border-collapse">
           <thead className="bg-[#F9FAFB] text-[#000000] sticky top-0 z-10 h-[48px]">
             <tr>
-              <th className="px-4 font-medium text-[13px] w-[140px] border-b border-[#E5E7EB]">Date</th>
+              <th className="px-4 font-medium text-[13px] w-[140px] border-b border-[#E5E7EB]">
+                <div className="flex items-center gap-1 cursor-pointer group">
+                  Date
+                  <CaretUpDown size={14} className="text-[#9CA3AF] group-hover:text-[#000000] transition-colors" />
+                </div>
+              </th>
               <th className="px-4 font-medium text-[13px] w-[140px] border-b border-[#E5E7EB]">Amount</th>
               <th className="px-4 font-medium text-[13px] w-[240px] border-b border-[#E5E7EB]">Description</th>
               <th className="px-4 font-medium text-[13px] w-[120px] border-b border-[#E5E7EB]">Reference</th>
@@ -39,7 +44,7 @@ const BankTransactionsTable: React.FC<BankTransactionsTableProps> = ({ data, onR
               return (
                 <tr key={t.id} className={`group transition-colors min-h-[64px] border-b border-[#E5E7EB] last:border-0 hover:bg-[#F3F4F6] ${bgClass}`}>
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] font-normal text-[13px]">{t.date}</div></td>
-                  <td className="px-4 py-3 align-middle"><div className={`text-[13px] font-medium ${t.amount >= 0 ? 'text-[#10B981]' : 'text-[#000000]'}`}>{formatCurrency(t.amount)}</div></td>
+                  <td className="px-4 py-3 align-middle"><div className={`text-[13px] font-bold ${t.amount >= 0 ? 'text-[#10B981]' : 'text-[#000000]'}`}>{formatCurrency(t.amount)}</div></td>
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] font-medium text-[13px]">{t.description}</div></td>
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] text-[13px] font-normal">{t.reference || '-'}</div></td>
                   <td className="px-4 py-3 align-middle">

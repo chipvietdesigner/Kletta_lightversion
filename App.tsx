@@ -814,6 +814,8 @@ const App: React.FC = () => {
   const [isChooseExpensesModalOpen, setIsChooseExpensesModalOpen] = useState(false);
   const [isDateRangePickerOpen, setIsDateRangePickerOpen] = useState(false);
   const [selectedTransactionForReconciliation, setSelectedTransactionForReconciliation] = useState<BankTransaction | null>(null);
+  const [autoReconciliation, setAutoReconciliation] = useState(true);
+  const [autoMatching, setAutoMatching] = useState(true);
 
   const filteredTransactions = useMemo(() => {
     if (!filterCategory) return MOCK_INCOME_DATA;
@@ -1193,23 +1195,42 @@ const App: React.FC = () => {
     }
 
     if (activeItem === NavItemType.TRANSACTIONS) {
+      const Switch = ({ checked, onChange, label }: { checked: boolean, onChange: (v: boolean) => void, label: string }) => (
+        <label className="flex items-center gap-2 cursor-pointer select-none">
+          <span className="text-[13px] font-medium text-[#0F2F33]">{label}</span>
+          <div 
+            onClick={() => onChange(!checked)}
+            className={`relative w-[36px] h-[20px] rounded-full transition-colors duration-200 ease-in-out ${checked ? 'bg-[#005A66]' : 'bg-[#AFB1B6]'}`}
+          >
+            <div className={`absolute top-[2px] left-[2px] bg-white w-[16px] h-[16px] rounded-full transition-transform duration-200 ease-in-out shadow-sm ${checked ? 'translate-x-[16px]' : 'translate-x-0'}`} />
+          </div>
+        </label>
+      );
+
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
-           {/* Page Title */}
-           <div className="mb-5 flex items-center gap-4">
-             <h1 className="text-2xl font-bold text-[#0F2F33]">Transactions</h1>
-             <div className="h-6 w-px bg-[#E5E7EB]"></div>
-             <div 
-               onClick={() => setIsDateRangePickerOpen(true)}
-               className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
-             >
-               <CalendarBlank size={16} className="text-[#9CA3AF]" />
-               <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
-               <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
-             </div>
+           {/* Page Title & Toggles */}
+           <div className="mb-5 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <h1 className="text-2xl font-bold text-[#0F2F33]">Transactions</h1>
+                <div className="h-6 w-px bg-[#E5E7EB]"></div>
+                <div 
+                  onClick={() => setIsDateRangePickerOpen(true)}
+                  className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
+                >
+                  <CalendarBlank size={16} className="text-[#9CA3AF]" />
+                  <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
+                  <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-8">
+                 <Switch label="Auto-reconciliation" checked={autoReconciliation} onChange={setAutoReconciliation} />
+                 <Switch label="Auto-matching" checked={autoMatching} onChange={setAutoMatching} />
+              </div>
            </div>
 
-           {/* Wallet Selector */}
+           {/* Wallet and Date Selectors */}
            <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-4">
                   <div className="relative">
@@ -1221,49 +1242,61 @@ const App: React.FC = () => {
                         <CaretDown size={14} weight="bold" />
                      </div>
                   </div>
+                  <div className="flex items-center gap-2 h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
+                     <span className="text-[#6B7280] text-[13px] font-normal mr-1">First fetch date</span>
+                     <span className="text-[13px] text-[#0F2F33] font-medium">6 April 2025</span>
+                     <CalendarBlank size={16} className="text-[#9CA3AF] ml-2" />
+                  </div>
                </div>
             </div>
 
-            {/* Balance Summary Widgets */}
-            <div className="flex gap-4 mb-6 mt-4 overflow-x-auto custom-scrollbar pb-2">
-               {[
-                 { id: 'All', label: 'All 628', amount: -39726.82, icon: 'inventory_2' },
-                 { id: 'Reconciled', label: 'Reconciled 0', amount: 0.00, icon: 'check_circle' },
-                 { id: 'Unreconciled', label: 'Unreconciled 628', amount: -39726.82, icon: 'cancel' },
-               ].map((widget) => {
-                 const isActive = transactionsFilter === widget.id;
-                 return (
-                   <div 
-                     key={widget.id}
-                     onClick={() => setTransactionsFilter(widget.id as any)}
-                     className={`relative overflow-hidden rounded-[8px] px-4 py-3 border flex items-center gap-3 min-w-[220px] transition-all group cursor-pointer flex-shrink-0 ${
-                       isActive 
-                        ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
-                        : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
-                     }`}
-                   >
-                     <div className={`w-9 h-9 flex items-center justify-center flex-shrink-0 transition-colors ${
-                       isActive ? 'text-black' : 'text-[#6B7280]'
-                     }`}>
-                        <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: `'FILL' ${isActive ? 1 : 0}, 'wght' 400` }}>{widget.icon}</span>
-                     </div>
-                     <div className="flex flex-col z-10">
-                       <span className={`text-[12px] font-normal tracking-wide transition-colors ${isActive ? 'text-black/60' : 'text-[#6B7280]'}`}>
-                         {widget.label}
-                       </span>
-                       <span className={`text-[15px] font-medium leading-none mt-0.5 ${isActive ? 'text-black' : 'text-[#0F2F33]'}`}>
-                         {widget.amount < 0 ? '-' : ''}£{Math.abs(widget.amount).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                       </span>
-                     </div>
-                   </div>
-                 );
-               })}
+            {/* Balance Summary Widgets and Search */}
+            <div className="flex items-end justify-between mb-3 mt-4">
+               <div className="flex gap-4 overflow-x-auto custom-scrollbar pb-2">
+                  {[
+                    { id: 'All', label: 'All 628', amount: -39726.82, icon: 'inventory_2' },
+                    { id: 'Reconciled', label: 'Reconciled 0', amount: 0.00, icon: 'check_circle' },
+                    { id: 'Unreconciled', label: 'Unreconciled 628', amount: -39726.82, icon: 'cancel' },
+                  ].map((widget) => {
+                    const isActive = transactionsFilter === widget.id;
+                    return (
+                      <div 
+                        key={widget.id}
+                        onClick={() => setTransactionsFilter(widget.id as any)}
+                        className={`relative overflow-hidden rounded-[8px] px-4 py-3 border flex items-center gap-3 min-w-[220px] transition-all group cursor-pointer flex-shrink-0 ${
+                          isActive 
+                           ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                           : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
+                        }`}
+                      >
+                        <div className={`w-9 h-9 flex items-center justify-center flex-shrink-0 transition-colors ${
+                          isActive ? 'text-black' : 'text-[#6B7280]'
+                        }`}>
+                           <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: `'FILL' ${isActive ? 1 : 0}, 'wght' 400` }}>{widget.icon}</span>
+                        </div>
+                        <div className="flex flex-col z-10">
+                          <span className={`text-[12px] font-normal tracking-wide transition-colors ${isActive ? 'text-black/60' : 'text-[#6B7280]'}`}>
+                            {widget.label}
+                          </span>
+                          <span className={`text-[15px] font-medium leading-none mt-0.5 ${isActive ? 'text-black' : 'text-[#0F2F33]'}`}>
+                            {widget.amount < 0 ? '-' : ''}£{Math.abs(widget.amount).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+               </div>
+               <div className="relative ml-4 pb-2">
+                  <div className="absolute top-0 left-0 h-[36px] pl-3 flex items-center pointer-events-none text-[#9CA3AF]">
+                    <MagnifyingGlass size={16} />
+                  </div>
+                  <input 
+                    type="text" 
+                    placeholder="Search by amount or description"
+                    className="h-[36px] pl-10 pr-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] placeholder-[#9CA3AF] focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors w-[320px] focus:outline-none font-normal"
+                  />
+               </div>
             </div>
-
-           <TableToolbar 
-             placeholder="Search by amount or description"
-             secondaryAction={<div />}
-           />
 
            <BankTransactionsTable 
              data={filteredBankTransactions} 
