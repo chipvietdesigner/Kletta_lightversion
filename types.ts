@@ -170,12 +170,27 @@ export interface DashboardData {
     income: number;
     expenses: number;
     profit: number;
+    vatEstimate: number;
+    aiEfficiency: number; // 0 to 100
   };
   chart: {
     month: string;
     income: number;
     expenses: number;
     profit: number;
+  }[];
+  categoryBreakdown: {
+    label: string;
+    value: number; // amount
+    percentage: number;
+    color: string;
+  }[];
+  recentInvoices: {
+    id: string;
+    customer: string;
+    amount: number;
+    status: InvoiceStatus;
+    date: string;
   }[];
 }
 

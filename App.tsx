@@ -759,18 +759,33 @@ const MOCK_TAX_RETURNS_DATA: TaxReturnRow[] = [
 
 const MOCK_DASHBOARD_DATA: DashboardData = {
   kpi: {
-    income: 7418.00,
+    income: 18450.00,
     expenses: 7095.53,
-    profit: 322.47
+    profit: 11354.47,
+    vatEstimate: 2150.80,
+    aiEfficiency: 92
   },
   chart: [
-    { month: 'Apr', income: 0, expenses: 680, profit: -680 },
-    { month: 'May', income: 0, expenses: 680, profit: -680 },
-    { month: 'Jun', income: 0, expenses: 680, profit: -680 },
-    { month: 'Jul', income: 0, expenses: 680, profit: -680 },
-    { month: 'Aug', income: 518, expenses: 680, profit: -162 },
-    { month: 'Sept', income: 4200, expenses: 3195.53, profit: 1004.47 },
-    { month: 'Oct', income: 2700, expenses: 500, profit: 2200 },
+    { month: 'Oct', income: 4500, expenses: 1200, profit: 3300 },
+    { month: 'Nov', income: 5200, expenses: 1500, profit: 3700 },
+    { month: 'Dec', income: 6100, expenses: 1800, profit: 4300 },
+    { month: 'Jan', income: 5800, expenses: 1400, profit: 4400 },
+    { month: 'Feb', income: 6400, expenses: 1900, profit: 4500 },
+    { month: 'Mar', income: 7200, expenses: 2100, profit: 5100 },
+    { month: 'Apr', income: 7418, expenses: 1095, profit: 6323 },
+  ],
+  categoryBreakdown: [
+    { label: 'Technology', value: 4200, percentage: 45, color: '#005A66' },
+    { label: 'Rent', value: 2500, percentage: 25, color: '#FFDD33' },
+    { label: 'Marketing', value: 1500, percentage: 15, color: '#008C99' },
+    { label: 'Travel', value: 1000, percentage: 10, color: '#F3F4F6' },
+    { label: 'Other', value: 500, percentage: 5, color: '#E5E7EB' },
+  ],
+  recentInvoices: [
+    { id: '1', customer: 'Sami Kletta', amount: 1250.00, status: 'Open', date: '15.01.2025' },
+    { id: '2', customer: 'Danny Pham', amount: 75.50, status: 'Due', date: '20.01.2025' },
+    { id: '3', customer: 'James Bond', amount: 3000.00, status: 'Paid', date: '25.01.2025' },
+    { id: '4', customer: 'Origami Studio', amount: 450.00, status: 'Paid', date: '10.01.2025' },
   ]
 };
 
@@ -942,7 +957,7 @@ const App: React.FC = () => {
     if (activeItem === NavItemType.DASHBOARD) {
       return (
         <main className="flex-1 overflow-hidden flex flex-col bg-white">
-          <Dashboard data={MOCK_DASHBOARD_DATA} />
+          <Dashboard data={MOCK_DASHBOARD_DATA} onOpenDateRangePicker={() => setIsDateRangePickerOpen(true)} />
         </main>
       );
     }
