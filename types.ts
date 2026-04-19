@@ -59,6 +59,7 @@ export interface BankTransaction {
   amount: number;
   reconciled: boolean;
   reconciledItems?: ReconciledItem[];
+  aiProposal?: ReconciledItem;
 }
 
 export interface VatReturn {

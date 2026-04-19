@@ -599,7 +599,8 @@ const MOCK_BANK_TRANSACTIONS: BankTransaction[] = [
     amount: 500.00,
     description: 'United Airlines',
     reference: '',
-    reconciled: false
+    reconciled: false,
+    aiProposal: { id: 'p1', type: 'Income', amount: 500.00, date: '13.12.2025', label: 'Income 62905', description: 'United Airlines' }
   },
   {
     id: '12726',
@@ -607,7 +608,8 @@ const MOCK_BANK_TRANSACTIONS: BankTransaction[] = [
     amount: -4.33,
     description: 'Starbucks',
     reference: '',
-    reconciled: false
+    reconciled: false,
+    aiProposal: { id: 'p2', type: 'Expense', amount: -57.00, date: '04.10.2025', label: 'Expenses 61833', description: 'Wilko' }
   },
   {
     id: '12725',

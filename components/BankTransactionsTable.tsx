@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BankTransaction, ReconciledItem } from '../types';
-import { X, Image, FileText, CaretUpDown } from '@phosphor-icons/react';
+import { X, Image, FileText, CaretUpDown, Check, Sparkle } from '@phosphor-icons/react';
 
 interface BankTransactionsTableProps {
   data: BankTransaction[];
@@ -32,7 +32,7 @@ const BankTransactionsTable: React.FC<BankTransactionsTableProps> = ({ data, onR
               </th>
               <th className="px-4 font-medium text-[13px] w-[140px] border-b border-[#E5E7EB]">Amount</th>
               <th className="px-4 font-medium text-[13px] w-[240px] border-b border-[#E5E7EB]">Description</th>
-              <th className="px-4 font-medium text-[13px] w-[120px] border-b border-[#E5E7EB]">Reference</th>
+              <th className="px-4 font-medium text-[13px] w-[460px] border-b border-[#E5E7EB]">Reference</th>
               <th className="px-4 font-medium text-[13px] w-[420px] border-b border-[#E5E7EB]">Reconciled</th>
               <th className="px-4 font-medium text-[13px] w-[280px] border-b border-[#E5E7EB]">Category</th>
               <th className="px-4 font-medium text-[13px] w-[100px] text-right border-b border-[#E5E7EB]">ID</th>
@@ -46,11 +46,44 @@ const BankTransactionsTable: React.FC<BankTransactionsTableProps> = ({ data, onR
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] font-normal text-[13px]">{t.date}</div></td>
                   <td className="px-4 py-3 align-middle"><div className={`text-[13px] font-bold ${t.amount >= 0 ? 'text-[#10B981]' : 'text-[#000000]'}`}>{formatCurrency(t.amount)}</div></td>
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] font-medium text-[13px]">{t.description}</div></td>
-                  <td className="px-4 py-3 align-middle"><div className="text-[#000000] text-[13px] font-normal">{t.reference || '-'}</div></td>
+                  <td className="px-4 py-3 align-middle">
+                    <div className="flex flex-col gap-2">
+                       {(!t.aiProposal || t.reconciled) && <span className="text-[#000000] text-[13px] font-normal">{t.reference || '-'}</span>}
+                       {t.aiProposal && !t.reconciled && (
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-stretch bg-[#FDE047] rounded-full overflow-hidden w-fit max-w-[400px] shadow-sm">
+                            <div className="pl-5 pr-4 py-2.5 flex items-center gap-4 min-w-0">
+                              <span className="font-bold text-[14px] whitespace-nowrap text-[#000000]">{formatCurrency(t.aiProposal.amount)}</span>
+                              <div className="flex flex-col min-w-0 pr-2">
+                                <span className="font-bold text-[13px] text-[#000000] truncate">{t.aiProposal.label}</span>
+                                <span className="text-[11px] text-[#000000]/70 truncate">{t.aiProposal.date} • {t.aiProposal.description}</span>
+                              </div>
+                            </div>
+                            <div className="bg-[#FEF08A] pl-3 pr-4 flex items-center gap-2 border-l border-[#000000]/5">
+                              <div className="w-6 h-6 bg-[#16A34A] rounded-full flex items-center justify-center text-white cursor-pointer hover:bg-[#15803D] transition-colors shadow-sm">
+                                <Check size={14} weight="bold" />
+                              </div>
+                              <div className="w-6 h-6 bg-[#9CA3AF] rounded-full flex items-center justify-center text-white cursor-pointer hover:bg-[#6B7280] transition-colors shadow-sm">
+                                <X size={14} weight="bold" />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1.5 pl-3">
+                            <Sparkle size={16} weight="fill" className="text-[#FDE047]" />
+                            <span className="text-[12px] font-medium text-[#6B7280]">Proposed by Kletta AI Assistant</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </td>
                   <td className="px-4 py-3 align-middle">
                     <div className="flex flex-col gap-2">
                       {!t.reconciled || !t.reconciledItems || t.reconciledItems.length === 0 ? (
-                          <div className="self-start"><button onClick={() => onReconcile && onReconcile(t)} className="h-[30px] px-3 bg-white border border-[#B5B5B5] hover:bg-[#F9FAFB] rounded-[8px] text-[13px] font-medium text-[#000000] shadow-sm flex items-center gap-2"><span className="text-[#000000]">—</span> Unreconciled</button></div>
+                        <div className="self-start">
+                          <button onClick={() => onReconcile && onReconcile(t)} className="h-[30px] px-3 bg-white border border-[#B5B5B5] hover:bg-[#F9FAFB] rounded-[8px] text-[13px] font-medium text-[#000000] shadow-sm flex items-center gap-2">
+                            <span className="text-[#000000]">—</span> Unreconciled
+                          </button>
+                        </div>
                       ) : (t.reconciledItems.map((item, idx) => (
                           <div key={idx} className={`flex items-center justify-between px-3 py-1.5 rounded-[8px] border text-[12px] font-medium w-full max-w-[380px] ${getPillStyle(item)}`}>
                               <div className="flex items-center gap-3 overflow-hidden min-w-0"><span className="font-medium">{formatCurrency(item.amount)}</span><span className="truncate">{item.label} • {item.description}</span></div>
