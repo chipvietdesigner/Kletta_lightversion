@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { IncomeTransaction } from '../types';
 import SaleDocumentModal from './SaleDocumentModal';
 import { 
+  CheckCircle,
   FileText, 
   SealCheck, 
   Trash, 
@@ -242,8 +243,8 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
           }}
           className="h-[24px] px-2.5 rounded-[8px] border border-[#B5B5B5] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors group/plus"
         >
-          <Plus size={12} className="mr-1 text-[#374151]" />
-          <span className="text-[12px] font-medium text-[#374151]">Cash</span>
+          <Plus size={12} className="mr-1 text-[#000000]" />
+          <span className="text-[12px] font-medium text-[#000000]">Cash</span>
         </button>
       );
     }
@@ -251,20 +252,20 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
     const isCash = index % 3 === 0; // Simulate different types
 
     if (isCash) {
-      // Badge type A — "Cash" (unreconciled / needs assignment)
+      // Badge type A — "Cash" (reconciled)
       return (
-        <div className="h-[24px] px-2.5 rounded-[8px] border border-[#B5B5B5] bg-transparent flex items-center gap-1.5">
-          <span className="text-[12px]">🪙</span>
-          <span className="text-[12px] font-medium text-[#374151]">Cash</span>
+        <div className="inline-flex items-center gap-1.5 bg-transparent">
+          <CheckCircle size={16} weight="fill" className="text-[#1D9E75]" />
+          <span className="text-[13px] font-normal text-[#000000]">Cash</span>
         </div>
       );
     }
 
     // Badge type B — "Transaction XXXXX" (reconciled)
     return (
-      <div className="inline-flex items-center gap-2 bg-transparent">
-        <div className="w-2 h-2 rounded-full bg-[#1D9E75]" />
-        <span className="text-[13px] font-normal text-[#374151]">Transaction {28000 + index}</span>
+      <div className="inline-flex items-center gap-1.5 bg-transparent">
+        <CheckCircle size={16} weight="fill" className="text-[#1D9E75]" />
+        <span className="text-[13px] font-normal text-[#000000]">Transaction {28000 + index}</span>
       </div>
     );
   };
@@ -287,11 +288,10 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                 <span>Document</span>
               </th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[180px] text-left align-middle">
+              <th className="px-4 py-3 font-medium text-[12px] w-[200px] text-left align-middle">
                 <div className="flex items-center gap-1">
                   <span>Category</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
-                  <CaretDown size={12} className="text-[#000000]" />
                 </div>
               </th>
               
@@ -299,7 +299,6 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                 <div className="flex items-center gap-1">
                   <span>Date</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
-                  <CaretDown size={12} className="text-[#000000]" />
                 </div>
               </th>
               
@@ -307,13 +306,12 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                 <div className="flex items-center gap-1">
                   <span>Customer</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
-                  <CaretDown size={12} className="text-[#000000]" />
                 </div>
               </th>
               
               <th className="px-4 py-3 font-medium text-[12px] w-[120px] text-left align-middle">Type ID</th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[160px] text-left align-middle">Reconciled</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[180px] text-left align-middle">Reconciled</th>
               
               <th className="px-4 py-3 font-medium text-[12px] w-[200px] text-left align-middle">Tax rate</th>
 
@@ -379,7 +377,18 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                       {/* Document */}
                       <td className="p-0">
                         <div className="h-full flex items-center px-4">
-                          <span className="text-[#D1D5DB]">—</span>
+                          {t.hasDocument && t.documentUrl ? (
+                            <div className="w-[24px] h-[32px] rounded border border-[#E5E7EB] overflow-hidden bg-[#f9fafb] cursor-pointer">
+                              <img 
+                                src={t.documentUrl} 
+                                alt="Receipt"
+                                className="w-full h-full object-cover"
+                                referrerPolicy="no-referrer"
+                              />
+                            </div>
+                          ) : (
+                            <span className="text-[#D1D5DB]">—</span>
+                          )}
                         </div>
                       </td>
 
@@ -394,7 +403,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                         >
                           <div className="flex items-center gap-2 hover:underline decoration-[#D1D5DB] underline-offset-4 overflow-hidden">
                             <span className="material-symbols-outlined text-[#000000] flex-shrink-0" style={{ fontSize: '18px' }}>{getCategoryIcon(t.category)}</span>
-                            <span className="text-[#000000] text-[13px] font-normal truncate">{t.category}</span>
+                            <span className="text-[#000000] text-[13px] font-medium truncate">{t.category}</span>
                             <CaretDown size={10} className="text-[#000000] ml-1 flex-shrink-0" />
                           </div>
 
@@ -435,7 +444,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions: initi
                       {/* Customer */}
                       <td className="p-0" onMouseEnter={() => setHoveredColKey('customer')}>
                         <div className="h-full flex items-center px-4 relative overflow-hidden">
-                          <span className="text-[#000000] text-[13px] font-normal truncate">{t.customer}</span>
+                          <span className="text-[#000000] text-[13px] font-medium truncate">{t.customer}</span>
                         </div>
                       </td>
 

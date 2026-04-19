@@ -7,6 +7,7 @@ export interface IncomeTransaction {
   category: string;
   typeId: string;
   hasDocument: boolean;
+  documentUrl?: string;
   reference: string;
   reconciled: boolean;
   subtotal: number;

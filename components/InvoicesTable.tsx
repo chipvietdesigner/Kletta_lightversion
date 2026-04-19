@@ -72,9 +72,10 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices, statusFilter })
                     <div className="h-full flex items-center justify-center px-4">
                       <button className="w-[26px] h-[34px] rounded border border-[#E5E7EB] overflow-hidden shadow-sm hover:border-[#1E6F73] transition-all bg-[#f9fafb] flex-shrink-0">
                         <img 
-                          src="https://images.unsplash.com/photo-1626262323430-39bc79bc052c?q=80&w=200&auto=format&fit=crop" 
+                          src="https://images.unsplash.com/photo-1626262323430-39bc79bc052c?q=80&w=200&h=300&auto=format&fit=crop" 
                           alt="Invoice thumbnail"
                           className="w-full h-full object-cover block"
+                          referrerPolicy="no-referrer"
                         />
                       </button>
                     </div>

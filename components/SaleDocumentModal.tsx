@@ -87,8 +87,8 @@ const SaleDocumentModal: React.FC<SaleDocumentModalProps> = ({ isOpen, onClose, 
                 <div className="flex-[3] text-[15px] font-medium text-[#002b31]">Materials</div>
                 <div className="flex-1 text-center text-[15px] font-medium text-[#002b31]">460</div>
                 <div className="flex-1 text-center text-[15px] font-medium text-[#002b31]"></div>
-                <div className="flex-1 text-right text-[15px] font-medium text-[#002b31]">£1.00</div>
-                <div className="flex-1 text-right text-[15px] font-bold text-[#002b31]">£460.00</div>
+                <div className="flex-1 text-right text-[15px] font-medium text-[#002b31]">€1.00</div>
+                <div className="flex-1 text-right text-[15px] font-bold text-[#002b31]">€460.00</div>
               </div>
             </div>
           </div>
@@ -97,11 +97,11 @@ const SaleDocumentModal: React.FC<SaleDocumentModalProps> = ({ isOpen, onClose, 
           <div className="flex flex-col items-end pt-8 gap-4 pr-1">
             <div className="flex justify-between w-56 text-[15px]">
               <span className="font-medium text-[#616A6B]">Subtotal</span>
-              <span className="font-bold text-[#002b31]">£460.00</span>
+              <span className="font-bold text-[#002b31]">€460.00</span>
             </div>
             <div className="flex justify-between w-56 text-[18px]">
               <span className="font-bold text-[#002b31]">Total</span>
-              <span className="font-bold text-[#002b31]">£460.00</span>
+              <span className="font-bold text-[#002b31]">€460.00</span>
             </div>
           </div>
 

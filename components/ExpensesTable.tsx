@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ExpenseTransaction } from '../types';
 import { 
+  CheckCircle,
   FileText, 
   SealCheck, 
   Trash, 
@@ -209,8 +210,8 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
           }}
           className="h-[24px] px-2.5 rounded-[8px] border border-[#B5B5B5] bg-white flex items-center justify-center hover:bg-gray-50 transition-colors group/plus"
         >
-          <Plus size={12} className="mr-1 text-[#374151]" />
-          <span className="text-[12px] font-medium text-[#374151]">Cash</span>
+          <Plus size={12} className="mr-1 text-[#000000]" />
+          <span className="text-[12px] font-medium text-[#000000]">Cash</span>
         </button>
       );
     }
@@ -219,17 +220,17 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
 
     if (isCash) {
       return (
-        <div className="h-[24px] px-2.5 rounded-[8px] border border-[#B5B5B5] bg-transparent flex items-center gap-1.5">
-          <span className="text-[12px]">🪙</span>
-          <span className="text-[12px] font-medium text-[#374151]">Cash</span>
+        <div className="inline-flex items-center gap-1.5 bg-transparent">
+          <CheckCircle size={16} weight="fill" className="text-[#1D9E75]" />
+          <span className="text-[13px] font-normal text-[#000000]">Cash</span>
         </div>
       );
     }
 
     return (
-      <div className="inline-flex items-center gap-2 bg-transparent">
-        <div className="w-2 h-2 rounded-full bg-[#1D9E75]" />
-        <span className="text-[13px] font-normal text-[#374151]">Transaction {62000 + index}</span>
+      <div className="inline-flex items-center gap-1.5 bg-transparent">
+        <CheckCircle size={16} weight="fill" className="text-[#1D9E75]" />
+        <span className="text-[13px] font-normal text-[#000000]">Transaction {62000 + index}</span>
       </div>
     );
   };
@@ -256,7 +257,6 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
                 <div className="flex items-center gap-1">
                   <span>Category</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
-                  <CaretDown size={12} className="text-[#000000]" />
                 </div>
               </th>
               
@@ -264,7 +264,6 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
                 <div className="flex items-center gap-1">
                   <span>Date</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
-                  <CaretDown size={12} className="text-[#000000]" />
                 </div>
               </th>
               
@@ -272,13 +271,12 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
                 <div className="flex items-center gap-1">
                   <span>Supplier</span>
                   <ArrowsDownUp size={12} className="text-[#000000]" />
-                  <CaretDown size={12} className="text-[#000000]" />
                 </div>
               </th>
               
               <th className="px-4 py-3 font-medium text-[12px] w-[120px] text-left align-middle">Receipt ID</th>
               
-              <th className="px-4 py-3 font-medium text-[12px] w-[160px] text-left align-middle">Reconciled</th>
+              <th className="px-4 py-3 font-medium text-[12px] w-[180px] text-left align-middle">Reconciled</th>
               
               <th className="px-4 py-3 font-medium text-[12px] w-[200px] text-left align-middle">Tax rate</th>
 
@@ -350,6 +348,7 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ transactions: initialTran
                                 src={t.document} 
                                 alt="Receipt"
                                 className="w-full h-full object-cover"
+                                referrerPolicy="no-referrer"
                               />
                             </div>
                           ) : (

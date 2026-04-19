@@ -141,6 +141,7 @@ const CreateExpenseModal: React.FC<CreateExpenseModalProps> = ({ isOpen, onClose
                     src={URL.createObjectURL(file)}
                     alt="Preview"
                     className="w-full h-full object-contain p-4"
+                    referrerPolicy="no-referrer"
                   />
                 ) : (
                   <div className="flex flex-col items-center text-gray-500">

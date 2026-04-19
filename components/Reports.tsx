@@ -49,42 +49,42 @@ const Reports: React.FC = () => {
           <div>
             <div className="flex items-center justify-between mb-6 pb-2 border-b border-[#F9F9F8]"><h2 className="text-[16px] font-medium text-[#005A66]">Business Income</h2><Info size={16} className="text-[#005A66]" /></div>
             <div className="space-y-1 pl-1">
-              <ReportRow label="Revenue" amount="£0.00" />
-              <ReportRow label="Grants and subsidies received" amount="£0.00" />
-              <ReportRow label="Other business income" amount="£0.00" />
-              <ReportRow label="Interest income and other financial income" amount="£0.00" />
-              <ReportRow label="Use on business assets for private purposes" amount="£0.00" hasInput />
+              <ReportRow label="Revenue" amount="€0.00" />
+              <ReportRow label="Grants and subsidies received" amount="€0.00" />
+              <ReportRow label="Other business income" amount="€0.00" />
+              <ReportRow label="Interest income and other financial income" amount="€0.00" />
+              <ReportRow label="Use on business assets for private purposes" amount="€0.00" hasInput />
             </div>
           </div>
           <div className="bg-[#FFF7D6] border border-[#FFDD33]/30 rounded-xl px-6 py-5 flex justify-between items-center">
               <div className="flex flex-col"><span className="text-[15px] font-medium text-[#005A66]">Taxable business income</span><span className="text-[11px] text-[#616A6B] font-medium mt-0.5">Total calculated income before expenses</span></div>
-              <span className="text-[18px] font-medium text-[#005A66]">£0.00</span>
+              <span className="text-[18px] font-medium text-[#005A66]">€0.00</span>
           </div>
           <div>
             <div className="flex items-center justify-between mb-6 pb-2 border-b border-[#F9F9F8]"><h2 className="text-[16px] font-medium text-[#000000]">Business Expenses</h2><Info size={16} className="text-[#D1D5DB]" /></div>
             <div className="space-y-1 pl-1">
-              <ReportRow label="Cost of goods bought for resale or goods used" amount="£0.00" />
-              <ReportRow label="Car, van and travel expenses" amount="£0.00" />
-              <ReportRow label="Mileage claim 45p" amount="£0.00" />
-              <ReportRow label="Mileage claim 25p" amount="£0.00" />
-              <ReportRow label="Employee wages, salaries and other staff costs" amount="£0.00" />
-              <ReportRow label="Total amount of capital allowances" amount="£0.00" />
-              <ReportRow label="Rent, rates, power and insurance costs" amount="£0.00" />
-              <ReportRow label="Repairs and maintenance of property and equipment" amount="£0.00" />
-              <ReportRow label="Phone, fax, stationery and other office costs" amount="£0.00" />
-              <ReportRow label="Advertising and business entertainment costs" amount="£0.00" />
-              <ReportRow label="Interest on bank and other loans" amount="£0.00" />
-              <ReportRow label="Bank, credit card and other financial charges" amount="£0.00" />
-              <ReportRow label="Irrecoverable debts written off" amount="£0.00" />
-              <ReportRow label="Accountancy, legal and other professional fees" amount="£0.00" />
-              <ReportRow label="Depreciation and loss/profit on sale of assets" amount="£0.00" />
-              <ReportRow label="Other business expenses" amount="£0.00" />
-              <ReportRow label="Loss brought forward from earlier years" amount="£0.00" hasInput />
+              <ReportRow label="Cost of goods bought for resale or goods used" amount="€0.00" />
+              <ReportRow label="Car, van and travel expenses" amount="€0.00" />
+              <ReportRow label="Mileage claim 45p" amount="€0.00" />
+              <ReportRow label="Mileage claim 25p" amount="€0.00" />
+              <ReportRow label="Employee wages, salaries and other staff costs" amount="€0.00" />
+              <ReportRow label="Total amount of capital allowances" amount="€0.00" />
+              <ReportRow label="Rent, rates, power and insurance costs" amount="€0.00" />
+              <ReportRow label="Repairs and maintenance of property and equipment" amount="€0.00" />
+              <ReportRow label="Phone, fax, stationery and other office costs" amount="€0.00" />
+              <ReportRow label="Advertising and business entertainment costs" amount="€0.00" />
+              <ReportRow label="Interest on bank and other loans" amount="€0.00" />
+              <ReportRow label="Bank, credit card and other financial charges" amount="€0.00" />
+              <ReportRow label="Irrecoverable debts written off" amount="€0.00" />
+              <ReportRow label="Accountancy, legal and other professional fees" amount="€0.00" />
+              <ReportRow label="Depreciation and loss/profit on sale of assets" amount="€0.00" />
+              <ReportRow label="Other business expenses" amount="€0.00" />
+              <ReportRow label="Loss brought forward from earlier years" amount="€0.00" hasInput />
             </div>
           </div>
            <div className="bg-white border border-[#E5E7EB] rounded-xl px-6 py-5 flex justify-between items-center">
               <div className="flex flex-col"><span className="text-[15px] font-medium text-[#000000]">Total Expenses</span><span className="text-[11px] text-[#616A6B] font-medium mt-0.5">Calculated deductible expenses</span></div>
-              <span className="text-[18px] font-medium text-[#000000]">£0.00</span>
+              <span className="text-[18px] font-medium text-[#000000]">€0.00</span>
            </div>
         </div>
         <div className="flex flex-col items-center mt-10 gap-4">

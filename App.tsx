@@ -65,6 +65,7 @@ const INITIAL_INCOME_DATA: IncomeTransaction[] = [
     category: 'Business Income',
     typeId: 'Sale 570',
     hasDocument: true,
+    documentUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&h=300&auto=format&fit=crop',
     reference: 'POS-001',
     reconciled: true,
     subtotal: 200.00,
@@ -109,6 +110,7 @@ const INITIAL_INCOME_DATA: IncomeTransaction[] = [
     category: 'Consulting Fees',
     typeId: 'Inv-1024',
     hasDocument: true,
+    documentUrl: 'https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=200&h=300&auto=format&fit=crop',
     reference: 'PO-9921',
     reconciled: true,
     subtotal: 4500.00,
@@ -131,6 +133,7 @@ const INITIAL_INCOME_DATA: IncomeTransaction[] = [
     category: 'Service Income',
     typeId: 'Inv-1023',
     hasDocument: true,
+    documentUrl: 'https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=200&h=300&auto=format&fit=crop',
     reference: 'REF-882',
     reconciled: false,
     subtotal: 1250.00,
@@ -175,6 +178,7 @@ const INITIAL_INCOME_DATA: IncomeTransaction[] = [
     category: 'Merchandise',
     typeId: 'Sale 562',
     hasDocument: true,
+    documentUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&h=300&auto=format&fit=crop',
     reference: 'INV-009',
     reconciled: false,
     subtotal: 320.00,
@@ -197,6 +201,7 @@ const INITIAL_INCOME_DATA: IncomeTransaction[] = [
     category: 'Consulting Fees',
     typeId: 'Inv-1021',
     hasDocument: true,
+    documentUrl: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=200&h=300&auto=format&fit=crop',
     reference: 'MST-2',
     reconciled: true,
     subtotal: 2100.00,
@@ -393,7 +398,7 @@ const MOCK_EXPENSES_DATA: ExpenseTransaction[] = [
     customer: 'Welcome Keele Break North Group Fct',
     category: 'Other deductible expenses',
     receipt: 'Receipt 202520001',
-    document: 'doc1.jpg',
+    document: 'https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=200&h=300&auto=format&fit=crop',
     reconciled: true,
     subtotal: 21.65,
     taxRate: 'Exempted from VAT',
@@ -408,7 +413,7 @@ const MOCK_EXPENSES_DATA: ExpenseTransaction[] = [
     customer: 'WHSmith',
     category: 'External services',
     receipt: 'Receipt 202520002',
-    document: 'doc2.jpg',
+    document: 'https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=200&h=300&auto=format&fit=crop',
     reconciled: true,
     subtotal: 13.49,
     taxRate: '0%',
@@ -438,7 +443,7 @@ const MOCK_EXPENSES_DATA: ExpenseTransaction[] = [
     customer: 'Private car 25% depreciation',
     category: 'Vehicle depreciation',
     receipt: 'Manual entry 4812',
-    document: null,
+    document: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=200&h=300&auto=format&fit=crop',
     reconciled: false,
     subtotal: 750.00,
     taxRate: '0%',
@@ -1237,7 +1242,7 @@ const App: React.FC = () => {
               <div className="flex items-center gap-4">
                   <div className="relative">
                      <select className="h-[36px] pl-4 pr-10 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer min-w-[280px]">
-                        <option>£100.00 Plaid Standard Current Account</option>
+                        <option>€100.00 Plaid Standard Current Account</option>
                         <option>Savings</option>
                      </select>
                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#9CA3AF]">
@@ -1281,7 +1286,7 @@ const App: React.FC = () => {
                             {widget.label}
                           </span>
                           <span className={`text-[15px] font-medium leading-none mt-0.5 ${isActive ? 'text-black' : 'text-[#0F2F33]'}`}>
-                            {widget.amount < 0 ? '-' : ''}£{Math.abs(widget.amount).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            {widget.amount < 0 ? '-' : ''}€{Math.abs(widget.amount).toLocaleString('en-IE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                           </span>
                         </div>
                       </div>

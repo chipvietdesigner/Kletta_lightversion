@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BankTransaction, ReconciledItem } from '../types';
-import { X, Image, FileText, CaretUpDown, Check, Sparkle } from '@phosphor-icons/react';
+import { X, Image, FileText, CaretUpDown, Check, Sparkle, CaretDown } from '@phosphor-icons/react';
 
 interface BankTransactionsTableProps {
   data: BankTransaction[];
@@ -44,7 +44,7 @@ const BankTransactionsTable: React.FC<BankTransactionsTableProps> = ({ data, onR
               return (
                 <tr key={t.id} className={`group transition-colors min-h-[64px] border-b border-[#E5E7EB] last:border-0 hover:bg-[#F3F4F6] ${bgClass}`}>
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] font-normal text-[13px]">{t.date}</div></td>
-                  <td className="px-4 py-3 align-middle"><div className={`text-[13px] font-bold ${t.amount >= 0 ? 'text-[#10B981]' : 'text-[#000000]'}`}>{formatCurrency(t.amount)}</div></td>
+                  <td className="px-4 py-3 align-middle"><div className={`text-[14px] font-semibold ${t.amount >= 0 ? 'text-[#10B981]' : 'text-[#000000]'}`}>{formatCurrency(t.amount)}</div></td>
                   <td className="px-4 py-3 align-middle"><div className="text-[#000000] font-medium text-[13px]">{t.description}</div></td>
                   <td className="px-4 py-3 align-middle">
                     <div className="flex flex-col gap-2">
@@ -92,16 +92,40 @@ const BankTransactionsTable: React.FC<BankTransactionsTableProps> = ({ data, onR
                         )))}
                     </div>
                   </td>
-                  <td className="px-4 py-3 align-middle"><div className="flex flex-col gap-2 items-start">{t.reconciledItems?.map((item, idx) => (<span key={idx} className="px-3 py-1.5 rounded-[8px] text-[12px] font-medium border bg-[#F3F4F6] border-[#F3F4F6] text-[#000000]">{item.categoryLabel || '— Uncategorized'}</span>)) || <span className="px-3 py-1.5 rounded-[8px] text-[12px] font-medium border bg-white border-[#B5B5B5] text-[#000000] shadow-sm">— Uncategorized</span>}</div></td>
+                  <td className="px-4 py-3 align-middle">
+                    <div className="flex flex-col gap-2 items-start">
+                      {t.reconciledItems?.map((item, idx) => (
+                        item.categoryLabel ? (
+                          <div 
+                            key={idx} 
+                            className="px-3 py-1.5 rounded-[8px] text-[12px] font-medium border bg-[#F3F4F6] border-[#F3F4F6] text-[#000000] flex items-center gap-2 cursor-pointer hover:bg-[#E5E7EB] transition-colors"
+                          >
+                            <span className="material-symbols-outlined text-[#000000] flex-shrink-0" style={{ fontSize: '16px' }}>
+                              {item.categoryLabel.toLowerCase().includes('car') ? 'directions_car' : 
+                               item.categoryLabel.toLowerCase().includes('travel') ? 'flight' :
+                               item.categoryLabel.toLowerCase().includes('goods') ? 'package' : 'inventory_2'}
+                            </span>
+                            <span className="truncate">{item.categoryLabel}</span>
+                            <CaretDown size={10} className="text-[#000000] ml-0.5 flex-shrink-0" />
+                          </div>
+                        ) : (
+                          <span key={idx} className="px-3 py-1.5 rounded-[8px] text-[12px] font-medium border bg-[#F3F4F6] border-[#F3F4F6] text-[#000000]">
+                            — Uncategorized
+                          </span>
+                        )
+                      )) || (
+                        <span className="px-3 py-1.5 rounded-[8px] text-[12px] font-medium border bg-white border-[#B5B5B5] text-[#000000] shadow-sm">
+                          — Uncategorized
+                        </span>
+                      )}
+                    </div>
+                  </td>
                   <td className="px-4 py-3 align-middle text-right"><div className="text-[#616A6B] text-[12px] font-normal">{t.id}</div></td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-      </div>
-      <div className="bg-white py-3 flex justify-between items-center text-[13px] text-[#616A6B] px-6 border-t border-[#E5E7EB]">
-         <div><span className="font-medium text-[#000000]">{data.length}</span> results found</div>
       </div>
     </div>
   );
