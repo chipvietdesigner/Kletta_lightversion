@@ -20,6 +20,7 @@ import Welcome from './components/Welcome';
 import CreateExpenseModal from './components/CreateExpenseModal';
 import CreateIncomeModal from './components/CreateIncomeModal';
 import ChooseExpensesModal from './components/ChooseExpensesModal';
+import DateRangePickerModal from './components/DateRangePickerModal';
 import TableToolbar from './components/TableToolbar';
 import { NavItemType, IncomeTransaction, Client, ExpenseTransaction, VatReturn, TaxReturnRow, BankTransaction, DashboardData, Invitation, MileageTrip, MOCK_INVOICES } from './types';
 import { 
@@ -811,6 +812,7 @@ const App: React.FC = () => {
   const [isCreateExpenseModalOpen, setIsCreateExpenseModalOpen] = useState(false);
   const [isCreateIncomeModalOpen, setIsCreateIncomeModalOpen] = useState(false);
   const [isChooseExpensesModalOpen, setIsChooseExpensesModalOpen] = useState(false);
+  const [isDateRangePickerOpen, setIsDateRangePickerOpen] = useState(false);
   const [selectedTransactionForReconciliation, setSelectedTransactionForReconciliation] = useState<BankTransaction | null>(null);
 
   const filteredTransactions = useMemo(() => {
@@ -947,7 +949,7 @@ const App: React.FC = () => {
     if (activeItem === NavItemType.VAT_RETURNS) {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
-           <div className="mb-6 flex items-center justify-between">
+           <div className="mb-5 flex items-center justify-between">
              <h1 className="text-2xl font-bold text-[#0F2F33]">VAT returns</h1>
              <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#9CA3AF]">
@@ -970,28 +972,28 @@ const App: React.FC = () => {
     if (activeItem === NavItemType.TAX_RETURN) {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
-           <div className="mb-3 flex items-center justify-between">
+           <div className="mb-5 flex items-center justify-between">
              <div className="flex flex-col gap-4">
                <h1 className="text-2xl font-bold text-[#0F2F33]">Tax return</h1>
                
                {/* Segmented Toggle */}
-               <div className="inline-flex bg-[#F1EDDA] p-1 rounded-xl self-start">
+               <div className="h-[36px] inline-flex bg-[#F5F5F5] p-1 rounded-[6px] self-start items-center">
                  <button 
                    onClick={() => setTaxReturnTab('SENT')}
-                   className={`px-5 py-2 text-[13px] font-medium rounded-[6px] transition-all ${
+                   className={`h-full px-5 text-[13px] font-medium rounded-[4px] transition-all ${
                      taxReturnTab === 'SENT' 
                        ? 'bg-white text-[#0F2F33] shadow-sm' 
-                       : 'text-[#000000] hover:text-[#0F2F33]'
+                       : 'text-[#616A6B] hover:text-[#0F2F33]'
                    }`}
                  >
                    Sent
                  </button>
                  <button 
                    onClick={() => setTaxReturnTab('NOT SENT')}
-                   className={`px-5 py-2 text-[13px] font-medium rounded-[6px] transition-all ${
+                   className={`h-full px-5 text-[13px] font-medium rounded-[4px] transition-all ${
                      taxReturnTab === 'NOT SENT' 
                        ? 'bg-white text-[#0F2F33] shadow-sm' 
-                       : 'text-[#000000] hover:text-[#0F2F33]'
+                       : 'text-[#616A6B] hover:text-[#0F2F33]'
                    }`}
                  >
                    Not sent
@@ -1044,7 +1046,7 @@ const App: React.FC = () => {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
            {/* Page Title */}
-           <div className="mb-6 flex items-center justify-between">
+           <div className="mb-5 flex items-center justify-between">
              <h1 className="text-2xl font-bold text-[#0F2F33]">Invitations</h1>
            </div>
 
@@ -1083,19 +1085,22 @@ const App: React.FC = () => {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
            {/* Page Title */}
-           <div className="mb-6 flex items-center justify-between">
+           <div className="mb-5 flex items-center gap-4">
              <h1 className="text-2xl font-bold text-[#0F2F33]">Mileage</h1>
+             <div className="h-6 w-px bg-[#E5E7EB]"></div>
+             <div 
+               onClick={() => setIsDateRangePickerOpen(true)}
+               className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
+             >
+               <CalendarBlank size={16} className="text-[#9CA3AF]" />
+               <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
+               <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
+             </div>
            </div>
 
            {/* Toolbar (Filter & Actions) */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                  <div className="relative">
-                     <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
-                       Last 30 days
-                       <CaretDown size={14} className="text-[#9CA3AF]" />
-                     </button>
-                  </div>
                   <div className="relative">
                      <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
                        <Car size={16} className="text-[#9CA3AF]" />
@@ -1141,22 +1146,31 @@ const App: React.FC = () => {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
            {/* Page Title */}
-           <div className="mb-6 flex items-center justify-between">
+           <div className="mb-5 flex items-center gap-4">
              <h1 className="text-2xl font-bold text-[#0F2F33]">Invoices</h1>
+             <div className="h-6 w-px bg-[#E5E7EB]"></div>
+             <div 
+               onClick={() => setIsDateRangePickerOpen(true)}
+               className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
+             >
+               <CalendarBlank size={16} className="text-[#9CA3AF]" />
+               <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
+               <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
+             </div>
            </div>
 
            {/* Toolbar (Tabs) */}
            <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                  <div className="bg-[#F1EDDA] p-1 rounded-xl flex">
+                  <div className="h-[36px] bg-[#F5F5F5] p-1 rounded-[6px] flex items-center">
                       {(['All', 'Open', 'Paid', 'Due'] as const).map((status) => (
                         <button
                           key={status}
                           onClick={() => setInvoiceStatusFilter(status)}
-                          className={`px-5 py-2 text-[13px] font-medium rounded-[6px] transition-all ${
+                          className={`h-full px-5 text-[13px] font-medium rounded-[4px] transition-all ${
                             invoiceStatusFilter === status 
                               ? 'bg-white text-[#0F2F33] shadow-sm' 
-                              : 'text-[#000000] hover:text-[#0F2F33]'
+                              : 'text-[#616A6B] hover:text-[#0F2F33]'
                           }`}
                         >
                           {status}
@@ -1165,10 +1179,6 @@ const App: React.FC = () => {
                   </div>
               </div>
                <div className="flex items-center gap-3">
-                    <button className="h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium flex items-center gap-2 transition-colors hover:border-[#D1D5DB]">
-                       Last 30 days
-                       <CaretDown size={14} className="text-[#9CA3AF]" />
-                    </button>
                     <button className="h-[36px] px-5 bg-[#FFDD33] hover:bg-[#FACC15] text-[#000000] text-[13px] font-medium rounded-[6px] flex items-center gap-2 transition-colors shadow-sm">
                        <Plus size={16} weight="bold" />
                        Create Invoice
@@ -1186,12 +1196,21 @@ const App: React.FC = () => {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
            {/* Page Title */}
-           <div className="mb-2">
+           <div className="mb-5 flex items-center gap-4">
              <h1 className="text-2xl font-bold text-[#0F2F33]">Transactions</h1>
+             <div className="h-6 w-px bg-[#E5E7EB]"></div>
+             <div 
+               onClick={() => setIsDateRangePickerOpen(true)}
+               className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
+             >
+               <CalendarBlank size={16} className="text-[#9CA3AF]" />
+               <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
+               <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
+             </div>
            </div>
 
-           {/* Wallet and Date Selectors */}
-           <div className="flex items-center justify-between mb-6">
+           {/* Wallet Selector */}
+           <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-4">
                   <div className="relative">
                      <select className="h-[36px] pl-4 pr-10 bg-white border border-[#B5B5B5] rounded-[6px] text-[13px] text-[#0F2F33] font-medium focus:border-[#1E6F73] focus:ring-1 focus:ring-[#1E6F73] transition-colors appearance-none cursor-pointer min-w-[280px]">
@@ -1202,23 +1221,48 @@ const App: React.FC = () => {
                         <CaretDown size={14} weight="bold" />
                      </div>
                   </div>
-                  <div className="flex items-center gap-2 h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
-                     <span className="text-[#6B7280] text-[13px] font-normal mr-1">First fetch date</span>
-                     <span className="text-[13px] text-[#0F2F33] font-medium">6 April 2025</span>
-                     <CalendarBlank size={16} className="text-[#9CA3AF] ml-2" />
-                  </div>
                </div>
+            </div>
+
+            {/* Balance Summary Widgets */}
+            <div className="flex gap-4 mb-6 mt-4 overflow-x-auto custom-scrollbar pb-2">
+               {[
+                 { id: 'All', label: 'All 628', amount: -39726.82, icon: 'inventory_2' },
+                 { id: 'Reconciled', label: 'Reconciled 0', amount: 0.00, icon: 'check_circle' },
+                 { id: 'Unreconciled', label: 'Unreconciled 628', amount: -39726.82, icon: 'cancel' },
+               ].map((widget) => {
+                 const isActive = transactionsFilter === widget.id;
+                 return (
+                   <div 
+                     key={widget.id}
+                     onClick={() => setTransactionsFilter(widget.id as any)}
+                     className={`relative overflow-hidden rounded-[8px] px-4 py-3 border flex items-center gap-3 min-w-[220px] transition-all group cursor-pointer flex-shrink-0 ${
+                       isActive 
+                        ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                        : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
+                     }`}
+                   >
+                     <div className={`w-9 h-9 flex items-center justify-center flex-shrink-0 transition-colors ${
+                       isActive ? 'text-black' : 'text-[#6B7280]'
+                     }`}>
+                        <span className="material-symbols-outlined" style={{ fontSize: '24px', fontVariationSettings: `'FILL' ${isActive ? 1 : 0}, 'wght' 400` }}>{widget.icon}</span>
+                     </div>
+                     <div className="flex flex-col z-10">
+                       <span className={`text-[12px] font-normal tracking-wide transition-colors ${isActive ? 'text-black/60' : 'text-[#6B7280]'}`}>
+                         {widget.label}
+                       </span>
+                       <span className={`text-[15px] font-medium leading-none mt-0.5 ${isActive ? 'text-black' : 'text-[#0F2F33]'}`}>
+                         {widget.amount < 0 ? '-' : ''}£{Math.abs(widget.amount).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                       </span>
+                     </div>
+                   </div>
+                 );
+               })}
             </div>
 
            <TableToolbar 
              placeholder="Search by amount or description"
-             secondaryAction={
-               <div className="flex items-center gap-2 h-[36px] px-4 bg-white border border-[#B5B5B5] rounded-[6px] transition-colors cursor-pointer hover:border-[#D1D5DB]">
-                 <span className="text-[#6B7280] text-[13px] font-normal mr-1">First fetch date</span>
-                 <span className="text-[13px] text-[#0F2F33] font-medium">6 April 2025</span>
-                 <CalendarBlank size={16} className="text-[#9CA3AF] ml-2" />
-               </div>
-             }
+             secondaryAction={<div />}
            />
 
            <BankTransactionsTable 
@@ -1239,8 +1283,17 @@ const App: React.FC = () => {
       return (
             <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
                {/* Page Title */}
-               <div className="mb-3 flex items-center justify-between">
+               <div className="mb-5 flex items-center gap-4">
                  <h1 className="text-2xl font-bold text-[#0F2F33]">Expenses</h1>
+                 <div className="h-6 w-px bg-[#E5E7EB]"></div>
+                 <div 
+                   onClick={() => setIsDateRangePickerOpen(true)}
+                   className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
+                 >
+                   <CalendarBlank size={16} className="text-[#9CA3AF]" />
+                   <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
+                   <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
+                 </div>
                </div>
 
                {/* Summary Cards - Compact & No backgrounds/shadows */}
@@ -1281,6 +1334,7 @@ const App: React.FC = () => {
                    label: "Create Expense",
                    onClick: () => setIsCreateExpenseModalOpen(true)
                  }}
+                 secondaryAction={<div />}
                />
 
                {/* Logs-style Toolbar - Removed Spacer */}
@@ -1293,7 +1347,7 @@ const App: React.FC = () => {
     if (activeItem === NavItemType.ALL_CLIENTS) {
       return (
         <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
-          <div className="mb-3 flex items-center justify-between">
+          <div className="mb-5 flex items-center justify-between">
             <h1 className="text-2xl font-bold text-[#0F2F33]">Clients</h1>
           </div>
           
@@ -1384,8 +1438,17 @@ const App: React.FC = () => {
 
     return (
       <main className="flex-1 overflow-hidden flex flex-col px-6 py-4 bg-white">
-          <div className="mb-3 flex items-center justify-between">
+          <div className="mb-5 flex items-center gap-4">
             <h1 className="text-2xl font-bold text-[#0F2F33]">Income</h1>
+            <div className="h-6 w-px bg-[#E5E7EB]"></div>
+            <div 
+              onClick={() => setIsDateRangePickerOpen(true)}
+              className="flex items-center gap-2 h-[36px] bg-white rounded-[6px] transition-colors cursor-pointer"
+            >
+              <CalendarBlank size={16} className="text-[#9CA3AF]" />
+              <span className="text-[13px] text-[#0F2F33] font-medium">This tax year (01.01 → 31.12.2025)</span>
+              <CaretDown size={14} weight="fill" className="text-[#0F2F33] ml-1" />
+            </div>
           </div>
           
           {/* Income Summary Widgets - Compact & Background-free icons */}
@@ -1426,11 +1489,13 @@ const App: React.FC = () => {
               label: "Create Income",
               onClick: () => setIsCreateIncomeModalOpen(true)
             }}
+            secondaryAction={<div />}
           />
 
           {/* Logs-style Toolbar - Removed Spacer */}
           <TransactionTable transactions={filteredTransactions} />
           <CreateIncomeModal isOpen={isCreateIncomeModalOpen} onClose={() => setIsCreateIncomeModalOpen(false)} />
+          <DateRangePickerModal isOpen={isDateRangePickerOpen} onClose={() => setIsDateRangePickerOpen(false)} />
         </main>
     );
   };
