@@ -1287,7 +1287,7 @@ const App: React.FC = () => {
                         onClick={() => setTransactionsFilter(widget.id as any)}
                         className={`relative overflow-hidden rounded-[8px] px-4 py-3 border flex items-center gap-3 min-w-[220px] transition-all group cursor-pointer flex-shrink-0 ${
                           isActive 
-                           ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                           ? 'bg-[#FFEE99] border-[#886600] border-b shadow-sm' 
                            : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
                         }`}
                       >
@@ -1361,7 +1361,7 @@ const App: React.FC = () => {
                 onClick={() => setExpenseFilterCategory(card.id)}
                 className={`relative overflow-hidden rounded-[8px] px-4 py-3 border flex items-center gap-3 min-w-[220px] transition-all group cursor-pointer flex-shrink-0 ${
                     isActive 
-                    ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                    ? 'bg-[#FFEE99] border-[#886600] border-b shadow-sm' 
                     : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
                 }`}
                 >
@@ -1411,7 +1411,7 @@ const App: React.FC = () => {
                onClick={() => setClientsFilter('All')}
                className={`flex items-center gap-3 px-4 py-3 rounded-[8px] border cursor-pointer min-w-[200px] transition-all ${
                  clientsFilter === 'All' 
-                   ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                   ? 'bg-[#FFEE99] border-[#886600] border-b shadow-sm' 
                    : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
                }`}
              >
@@ -1428,7 +1428,7 @@ const App: React.FC = () => {
                onClick={() => setClientsFilter('Paying')}
                className={`flex items-center gap-3 px-4 py-3 rounded-[8px] border cursor-pointer min-w-[200px] transition-all ${
                  clientsFilter === 'Paying' 
-                   ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                   ? 'bg-[#FFEE99] border-[#886600] border-b shadow-sm' 
                    : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
                }`}
              >
@@ -1516,7 +1516,7 @@ const App: React.FC = () => {
                   onClick={() => setFilterCategory(widget.id as string | null)}
                   className={`relative overflow-hidden rounded-[8px] px-4 py-3 border flex items-center gap-3 min-w-[220px] transition-all group cursor-pointer flex-shrink-0 ${
                     isActive 
-                      ? 'bg-[#FFEE99] border-[#886600] border-b-2 shadow-sm' 
+                      ? 'bg-[#FFEE99] border-[#886600] border-b shadow-sm' 
                       : 'bg-white border-[#B5B5B5] hover:border-[#D1D5DB]'
                   }`}
                 >

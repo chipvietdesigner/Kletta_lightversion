@@ -50,11 +50,11 @@ const DateRangePickerModal: React.FC<DateRangePickerModalProps> = ({ isOpen, onC
                 
                 <div className="flex gap-2">
                   <div className="h-9 px-3 flex items-center gap-2 bg-white border border-[#E5E7EB] rounded-lg cursor-pointer">
-                    <span className="text-[14px] font-medium text-[#0F2F33]">Apr</span>
+                    <span className="text-[13px] font-medium text-[#0F2F33]">Apr</span>
                     <CaretDown size={14} className="text-[#9CA3AF]" />
                   </div>
                   <div className="h-9 px-3 flex items-center gap-2 bg-white border border-[#E5E7EB] rounded-lg cursor-pointer">
-                    <span className="text-[14px] font-medium text-[#0F2F33]">2025</span>
+                    <span className="text-[13px] font-medium text-[#0F2F33]">2025</span>
                     <CaretDown size={14} className="text-[#9CA3AF]" />
                   </div>
                 </div>
@@ -67,7 +67,7 @@ const DateRangePickerModal: React.FC<DateRangePickerModalProps> = ({ isOpen, onC
               {/* Calendar Weekdays */}
               <div className="grid grid-cols-7 gap-1 mb-2">
                 {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(day => (
-                  <div key={day} className="text-center text-[12px] font-medium text-[#6B7280] py-2">
+                  <div key={day} className="text-center text-[13px] font-medium text-[#6B7280] py-2">
                     {day}
                   </div>
                 ))}
@@ -82,7 +82,7 @@ const DateRangePickerModal: React.FC<DateRangePickerModalProps> = ({ isOpen, onC
                   return (
                     <div 
                       key={idx} 
-                      className={`h-9 flex items-center justify-center text-[14px] cursor-pointer rounded-lg transition-all ${
+                      className={`h-9 flex items-center justify-center text-[13px] cursor-pointer rounded-lg transition-all ${
                         isToday 
                           ? 'bg-[#005A66] text-white font-bold' 
                           : isCurrentMonth 
@@ -104,7 +104,7 @@ const DateRangePickerModal: React.FC<DateRangePickerModalProps> = ({ isOpen, onC
                   <button
                     key={preset}
                     onClick={() => setSelectedPreset(preset)}
-                    className={`w-full text-left px-4 py-2.5 text-[14px] font-medium rounded-lg transition-colors ${
+                    className={`w-full text-left px-4 py-2.5 text-[13px] font-medium rounded-lg transition-colors ${
                       selectedPreset === preset 
                         ? 'bg-[#F3F4F6] text-[#0F2F33]' 
                         : 'text-[#0F2F33] hover:bg-gray-50'
@@ -124,7 +124,7 @@ const DateRangePickerModal: React.FC<DateRangePickerModalProps> = ({ isOpen, onC
                 onApply?.(selectedPreset);
                 onClose();
               }}
-              className="w-full h-12 bg-[#005A66] text-white font-bold rounded-lg hover:bg-[#004852] transition-colors"
+              className="w-full h-[36px] bg-[#005A66] text-white font-bold rounded-lg hover:bg-[#004852] transition-colors"
             >
               Apply
             </button>

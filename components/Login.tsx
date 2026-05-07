@@ -96,7 +96,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
             {/* Login Button */}
             <button 
               type="submit" 
-              className="w-full bg-[#005A66] hover:bg-[#004D57] text-white h-[48px] rounded-[8px] font-bold text-[16px] transition-all shadow-[0_4px_0_0_#1A1A1A] mt-2 flex items-center justify-center transform active:translate-y-[2px] active:shadow-none"
+              className="w-full bg-[#002D33] hover:bg-[#001D21] text-white h-[48px] rounded-[8px] font-bold text-[16px] transition-all mt-2 flex items-center justify-center"
             >
               Login
             </button>
